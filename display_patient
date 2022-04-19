@@ -1,0 +1,134 @@
+
+echo "Select a choice"
+echo "1. search patient by name"
+echo "2. search patient by id"
+echo "3. search patient by doctor"
+echo "5. search patient by depratment"
+echo "6. display all patients with admission details"
+read choice
+if [[ $choice -eq 1 ]]
+then
+echo "Enter patient name"
+read name
+
+#validate name
+nfound=0
+names=`sudo mysql -u root -pcybercam -e "use patient;select name from patient_list;"`
+namearray=($names)
+for n in "${namearray[@]}"
+do
+  if [[ "$name" = "$n" ]]
+  then
+     nfound=1
+  fi
+done
+
+if [[ $nfound -eq 0 ]]
+then
+ echo "Patient name is not in the database.Please enter a valid patient name"
+ exit 1
+fi
+
+#display records
+
+sudo mysql -u root -pcybercam -e "use patient;select * from patient_list where name=\"$name\";"
+
+id=`sudo mysql -u root -pcybercam -e "use patient;select id from patient_list where name=\"$name\";"`
+idarr=($id)
+sudo mysql -u root -pcybercam -e "use patient;select * from admissions where id=\"${idarr[1]}\";"
+
+#---------------------------
+#search by id
+elif [[ $choice -eq 2 ]]
+then
+
+echo "Enter patient id"
+read p_id
+
+#validate id
+idfound=0
+temp=`sudo mysql -u root -pcybercam -e "use patient;select id from patient_list;"`
+idarray=($temp)
+
+for n in "${idarray[@]}"
+do
+  if [[ "$p_id" = "$n" ]]
+  then
+     idfound=1
+  fi
+done
+
+if [[ $idfound -eq 0 ]]
+then
+ echo "Patient id is not in the database.Please enter a valid patient id"
+ exit 1
+fi
+
+
+#display records
+
+sudo mysql -u root -pcybercam -e "use patient;select * from patient_list where id=$p_id;"
+
+id=`sudo mysql -u root -pcybercam -e "use patient;select id from patient_list where id=$p_id;"`
+idarr=($id)
+sudo mysql -u root -pcybercam -e "use patient;select * from admissions where id=\"${idarr[1]}\";"
+
+#--------------------------------------------
+#Display all patients
+elif [[ choice -eq 6 ]]
+then
+
+temp=`sudo mysql -u root -pcybercam -e "use patient;select id from patient_list;"`
+idarray=($temp)
+for n in "${idarray[@]}"
+do
+ sudo mysql -u root -pcybercam -e "use patient;select * from patient_list where id=$n;"
+ sudo mysql -u root -pcybercam -e "use patient;select * from admissions where id=\"$n\";"
+done
+#---------------------------------------------------
+#search by doctor
+elif [[ $choice -eq 3 ]]
+then
+
+echo "Enter doctor's name"
+read name
+IFS=$'\n'
+#validate name
+nfound=0
+names=`sudo mysql -u root -pcybercam -e "use hospitaltest;select name from doctor;"`
+namearray=($names)
+for n in "${namearray[@]}"
+do
+  temp_n=`echo $n| tr [:upper:] [:lower:]`
+  temp_name=`echo $name | tr [:upper:] [:lower:]`
+  if [[ "$temp_name" = "$temp_n" ]]
+  then
+     nfound=1
+  fi
+done
+
+if [[ $nfound -eq 0 ]]
+then
+ echo "doctors name is not in the database.Please enter a valid doctor name"
+ exit 1
+fi
+
+#display records
+
+sudo mysql -u root -pcybercam -e "use patient;select * from admissions where doctor_name=\"$name\";"
+
+id=`sudo mysql -u root -pcybercam -e "use patient;select id from admissions where doctor_name=\"$name\";"`
+echo $id
+idarr=`echo $id|sed 's/ /,/g'`
+echo "works till sed"
+echo "$idarr"
+sudo mysql -u root -pcybercam -e "use patient;select * from patient_list where id in ($idarr);"
+
+
+#---------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------
+else
+echo "Invalid entry"
+fi

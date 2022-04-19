@@ -1,0 +1,81 @@
+#!/bin/bash
+echo "Select your choice"
+echo "1.Update a Doctor's full record"
+echo "2.Delete Doctor's record"
+read choice
+if [[ "$choice" -eq 1 ]]
+then
+#Update code
+name_regex="[^a-zA-Z ]+"
+speciality_regex="[^a-zA-Z ]+"
+experience_regex="[^0-9]+"
+doc_building_regex="[^a-zA-Z0-9 ]+"
+
+
+echo "please add the following doctor details"
+
+echo "Enter doctor's id"
+read doc_id
+
+echo "Enter doctor name"
+read doc_name
+
+
+if [[ "$doc_name" =~ $name_regex ]]
+then
+echo "please enter a valid name"
+exit 1
+fi
+
+echo "Enter doctor's speciality"
+read doc_speciality
+
+if [[ "$doc_speciality" =~ $name_regex ]]
+then
+echo "please enter a valid speciality"
+exit 1
+fi
+
+echo "Enter doctor's experience"
+read doc_experience
+
+if [[ "$doc_experience" =~ $experience_regex ]]
+then
+echo "please enter a valid experience in years"
+exit 1
+fi
+
+echo "Enter doctor's office building"
+read doc_building
+
+if [[ "$doc_building" =~ $doc_building_regex ]]
+then
+echo "please enter a valid building"
+exit 1
+fi
+
+#SQL query
+sudo mysql -u root -pcybercam -e "use hospitaltest;update doctor set name=\"$doc_name\",speciality=\"$doc_speciality\",experience=\"$doc_experience\",building=\"$doc_building\" where id=\"$doc_id\";"
+echo "Doctor record updated"
+#----------------------------------------------
+
+
+elif [[ "$choice" -eq 2 ]]
+then
+#Delete Code
+echo "Enter doctor's id"
+read doc_id
+echo " Do you want to proceed with deleting doctor's record for ID $id(y/n)"
+read c1
+if [ "$c1" = y ]
+then
+sudo mysql -u root -pcybercam -e "use hospitaltest;delete from doctor where id=\"$doc_id\";"
+else
+echo "Not deleting record"
+fi
+#---------------------------------------------
+
+else
+echo "Incorrect Entry"
+#--------------------------------------------
+fi

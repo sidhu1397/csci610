@@ -1,0 +1,49 @@
+#Regex Check
+name_regex="[^a-zA-Z ]+"
+speciality_regex="[^a-zA-Z ]+"
+experience_regex="[^0-9]+"
+doc_building_regex="[^a-zA-Z0-9 ]+"
+
+
+echo "please add the following doctor details"
+echo "Enter doctor name"
+read doc_name
+
+if [[ "$doc_name" =~ $name_regex ]]
+then
+echo "please enter a valid name"
+exit 1
+fi
+
+echo "Enter doctor's speciality"
+read doc_speciality
+
+if [[ "$doc_speciality" =~ $name_regex ]]
+then
+echo "please enter a valid speciality"
+exit 1
+fi
+
+echo "Enter doctor's experience"
+read doc_experience
+
+if [[ "$doc_experience" =~ $experience_regex ]]
+then
+echo "please enter a valid experience in years"
+exit 1
+fi
+
+echo "Enter doctor's office building"
+read doc_building
+
+if [[ "$doc_building" =~ $doc_building_regex ]]
+then
+echo "please enter a valid building"
+exit 1
+fi
+
+
+#SQL Statement
+
+sudo mysql -u root -pcybercam -e "use hospitaltest;insert into doctor(name,speciality,experience,building) values(\"$doc_name\",\"$doc_speciality\",\"$doc_experience\",\"$doc_building\");"
+echo " Added doctor details "

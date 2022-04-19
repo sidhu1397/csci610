@@ -1,0 +1,50 @@
+# creating a menu with the following options
+echo "SELECT YOUR FAVORITE FRUIT";
+echo "1. Add a Dcotor"
+echo "2. Add a patient record"
+echo "3. Update or delete patient record"
+echo "4. Update or delete doctor record"
+echo "5. Display doctor record"
+echo "6. Display patient record"
+echo "99. exit"
+echo -n "Enter your menu choice [1-99]: "
+
+# Running a forever loop using while statement
+# This loop will run untill select the exit option.
+# User will be asked to select option again and again
+while :
+do
+
+# reading choice
+read choice
+
+# case statement is used to compare one value with the multiple cases.
+case $choice in
+  # Pattern 1
+  1)  echo "You have selected the option 1"
+      echo "Please enter the following details"
+	./add_doctor;;
+  # Pattern 2
+  2)  echo "You have selected the option 2"
+      echo "please enter the patient details details"
+	./add_patient;;
+  # Pattern 3
+  3)  echo "You have selected the option 3"
+      echo "please enter the following details";;    
+  # Pattern 4
+  4)  echo "you have selected option 4"
+      ./uord_doctor;;
+  5)  echo "you have selected option 5"
+      echo " Displaying doctor record"
+      ./display_doctor;;
+  6) echo "You have selected option 6"
+     ./display_patient ;;
+# pattern exit
+  99) echo "Exiting Menu"   
+      exit;;
+  # Default Pattern
+  *) echo "invalid option";;
+  
+esac
+  echo -n "Enter your menu choice [1-99]: "
+done
