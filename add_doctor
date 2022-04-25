@@ -2,48 +2,55 @@
 name_regex="[^a-zA-Z ]+"
 speciality_regex="[^a-zA-Z ]+"
 experience_regex="[^0-9]+"
-doc_building_regex="[^a-zA-Z0-9 ]+"
+doc_office_regex="[^0-9]+"
+qualification_regex="[^a-zA-Z ]+"
 
-
-echo "please add the following doctor details"
+echo "Please add the following doctor details"
 echo "Enter doctor name"
 read doc_name
 
 if [[ "$doc_name" =~ $name_regex ]]
 then
-echo "please enter a valid name"
+echo "Please enter a valid name"
 exit 1
 fi
 
 echo "Enter doctor's speciality"
 read doc_speciality
 
-if [[ "$doc_speciality" =~ $name_regex ]]
+if [[ "$doc_speciality" =~ $speciality_regex ]]
 then
-echo "please enter a valid speciality"
+echo "Please enter a valid speciality"
 exit 1
 fi
 
-echo "Enter doctor's experience"
-read doc_experience
+echo "Enter doctor's office number"
+read doc_office
 
-if [[ "$doc_experience" =~ $experience_regex ]]
+if [[ "$doc_office" =~ $doc_office_regex ]]
 then
-echo "please enter a valid experience in years"
+echo "Please enter a valid office number"
 exit 1
 fi
 
-echo "Enter doctor's office building"
-read doc_building
+echo "Enter doctor's qualification"
+read doc_qualification
 
-if [[ "$doc_building" =~ $doc_building_regex ]]
+if [[ "$doc_qualification" =~ $qualification_regex ]]
 then
-echo "please enter a valid building"
+echo "Please enter a valid qualification(MBBS/MD)"
 exit 1
 fi
 
+#ADD RECORDS
+filename=doctors.csv
+#Check if file ends with new line and add records appropriately
+if [ ! -s "$filename" ]; then
+  printf "%s%s%s%s%s\n" $RANDOM,$doc_name,$doc_speciality,$doc_office,$doc_qualification >> doctors.csv
+elif [ -z "$(tail -c 1 <"$filename")" ]; then
+  printf "%s%s%s%s%s\n" $RANDOM,"$doc_name","$doc_speciality",$doc_office,$doc_qualification >> doctors.csv
+else
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$doc_name","$doc_speciality",$doc_office,$doc_qualification >> doctors.csv
+fi
 
-#SQL Statement
-
-sudo mysql -u root -pcybercam -e "use hospitaltest;insert into doctor(name,speciality,experience,building) values(\"$doc_name\",\"$doc_speciality\",\"$doc_experience\",\"$doc_building\");"
-echo " Added doctor details "
+echo " Doctor's details added! "

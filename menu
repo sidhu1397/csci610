@@ -23,7 +23,7 @@ case $choice in
   # Pattern 1
   1)  echo "You have selected the option 1"
       echo "Please enter the following details"
-	./add_doctor;;
+	    ./add_doctor;;
   # Pattern 2
   2)  echo "You have selected the option 2"
       echo "please enter the patient details details"
@@ -33,12 +33,12 @@ case $choice in
       echo "please enter the following details";;    
   # Pattern 4
   4)  echo "you have selected option 4"
-      ./uord_doctor;;
+      ./uord_doctors;;
   5)  echo "you have selected option 5"
       echo " Displaying doctor record"
-      ./display_doctor;;
+      ./display_doctors;;
   6) echo "You have selected option 6"
-     ./display_patient ;;
+     ./display_patients;;
 # pattern exit
   99) echo "Exiting Menu"   
       exit;;
