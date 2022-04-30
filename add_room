@@ -1,0 +1,56 @@
+#Regex Check
+type_regex="[^a-zA-Z ]+"
+size_regex="[^0-9]+"
+no_of_beds_regex="[^0-9]+"
+building_id_regex="[^0-9]+"
+
+echo "Please add the following room details"
+echo "Enter room type"
+read room_type
+
+if [[ "$room_type" =~ $type_regex ]]
+then
+echo "Please enter a valid type"
+exit 1
+fi
+
+echo "Enter room's size"
+read room_size
+
+if [[ "$room_size" =~ $size_regex ]]
+then
+echo "Please enter a valid size"
+exit 1
+fi
+
+echo "Enter no of beds in room"
+read no_of_beds
+
+if [[ "$no_of_beds" =~ $no_of_beds_regex ]]
+then
+echo "Please enter a valid number of beds"
+exit 1
+fi
+
+echo "Enter building id"
+read building_id
+
+if [[ "$building_id" =~ $building_id_regex ]]
+then
+echo "Please enter a valid building id"
+exit 1
+fi
+
+
+#ADD RECORDS
+filename=rooms.csv
+#Check if file ends with new line and add records appropriately
+if [ ! -s "$filename" ]; then
+  printf "%s%s%s%s%s\n" $RANDOM,$room_type,"$room_size",$no_of_beds,$building_id >> rooms.csv
+elif [ -z "$(tail -c 1 <"$filename")" ]; then
+  printf "%s%s%s%s%s\n" $RANDOM,$room_type,"$room_size",$no_of_beds,$building_id >> rooms.csv
+else
+  printf "\n%s%s%s%s%s\n" $RANDOM,$room_type,"$room_size",$no_of_beds,$building_id >> rooms.csv
+fi
+
+echo " Room's details added! "

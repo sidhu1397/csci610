@@ -6,6 +6,8 @@ echo "3. Update or delete patient record"
 echo "4. Update or delete doctor record"
 echo "5. Display doctor record"
 echo "6. Display patient record"
+echo "7. Add a Building"
+echo "8. Update or delete Building record"
 echo "99. exit"
 echo -n "Enter your menu choice [1-99]: "
 
@@ -39,6 +41,8 @@ case $choice in
       ./display_doctors;;
   6) echo "You have selected option 6"
      ./display_patients;;
+  8) echo "You have selected option 8"
+      ./uord_buildings;;
 # pattern exit
   99) echo "Exiting Menu"   
       exit;;

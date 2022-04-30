@@ -1,0 +1,80 @@
+#Regex Check
+name_regex="[^a-zA-Z ]+"
+address_regex="[A-Za-z0-9'\.\-\s\,]"
+no_of_rooms_regex="[^0-9]+"
+doc_office_regex="[^0-9]+"
+manager_regex="[^a-zA-Z ]+"
+room_type_regex="[^a-zA-Z ]+"
+year_regex="[^0-9]+"
+status_regex="[^a-zA-Z ]+"
+department_regex="[^a-zA-Z ]+"
+
+echo "Please add the following buildings details"
+echo "Enter building name"
+read building_name
+
+if [[ "$building_name" =~ $name_regex ]]
+then
+echo "Please enter a valid name"
+exit 1
+fi
+
+echo "Enter building's address"
+read address
+
+if [[ "$address" =~ $address_regex ]]
+then
+echo "Please enter a valid address"
+exit 1
+fi
+
+echo "Enter building's no of rooms"
+read no_of_rooms
+
+if [[ "$no_of_rooms" =~ $no_of_rooms_regex ]]
+then
+echo "Please enter a valid room number"
+exit 1
+fi
+
+echo "Enter building's manager"
+read manager
+
+if [[ "$manager" =~ $manager_regex ]]
+then
+echo "Please enter a valid manager name"
+exit 1
+fi
+
+echo "Enter constructed year"
+read manager
+
+if [[ "$year" =~ $year_regex ]]
+then
+echo "Please enter a valid year name"
+exit 1
+fi
+
+echo "Enter department"
+read department
+
+if [[ "$department" =~ $department_regex ]]
+then
+echo "Please enter a valid department"
+exit 1
+fi
+
+
+
+#ADD RECORDS
+filename=buildings.csv
+#Check if file ends with new line and add records appropriately
+if [ ! -s "$filename" ]; then
+  printf "%s%s%s%s%s\n" $RANDOM,$building_name,$address,$no_of_rooms,$manager,$department >> buildings.csv
+elif [ -z "$(tail -c 1 <"$filename")" ]; then
+  printf "%s%s%s%s%s\n" $RANDOM,"$building_name","$address",$no_of_rooms,"$manager",$department >> buildings.csv
+else
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$building_name","$address",$no_of_rooms,"$manager",$department >> buildings.csv
+fi
+
+echo " Building's details added! "

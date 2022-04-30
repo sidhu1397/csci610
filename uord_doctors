@@ -1,4 +1,4 @@
-#!/bin/bash
+q#!/bin/bash
 echo "Select your choice"
 echo "1.Update a Doctor's full record"
 echo "2.Delete Doctor's record"
@@ -55,8 +55,7 @@ exit 1
 fi
 
 
-#AWK query
-# awk -F, 'BEGIN {FS=OFS} $1=="jack"{$2=27} 1' foo.csv > tmp && mv tmp foo.csv
+#UPDATE DOCTOR TABLE WITH INPUTS
 awk -F, -v doc_id=$doc_id -v doc_name="$doc_name" -v doc_speciality="$doc_speciality" -v doc_office=$doc_office -v doc_qualification="$doc_qualification" 'BEGIN {OFS=FS} {
     if($1 == doc_id) {
     $2=doc_name;
@@ -65,9 +64,16 @@ awk -F, -v doc_id=$doc_id -v doc_name="$doc_name" -v doc_speciality="$doc_specia
     $5=doc_qualification;
     }
     }1' doctors.csv > doctors.tmp && mv doctors.tmp doctors.csv
-#awk -F, '{$1="$docname";}1' OFS=, doctors.csv 
-#sudo mysql -u root -pcybercam -e "use hospitaltest;update doctor set name=\"$doc_name\",speciality=\"$doc_speciality\",experience=\"$doc_experience\",building=\"$doc_building\" where id=\"$doc_id\";"
-echo "Doctor record updated"
+
+#UPDATE DOCTOR'S NAME IN PATIENT TABLE AS WELL
+awk -F, -v doc_id=$doc_id -v doc_name="$doc_name" 'BEGIN{OFS=FS} {
+	if($5 == doc_id) {
+	$4=doc_name;
+	}
+	}1' patients.csv > patients.tmp && mv patients.tmp patients.csv	
+
+
+echo "Doctor records updated"
 #----------------------------------------------
 
 

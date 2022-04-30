@@ -1,0 +1,11 @@
+r_id,type,size_sq_ft,number_of_beds,building_id
+1,Emergency,20,20,1
+2,Delivery,12,5,2
+3,Consulting,10,5,3
+4,ICU,15,7,4
+5,Surgery,15,6,5
+6,Pharmacy,30,0,6
+7,Ward,40,25,7
+8,Day Care,30,20,8
+9,Deluxe,10,2,9
+10,Suite,15,1,10
