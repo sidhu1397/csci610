@@ -1,0 +1,13 @@
+ap_id,name,admitted_date,location,doctor,diagnosis,patient_id,doctor_id
+1,Bill Scott,02/03/2020,St Cloud,Johnny Depp,Heart attack,1,1
+2,Mike Foley,08/12/2019,St Cloud,,COVID,2,2
+3,Rob Jones,04/30/2020,Minneapolis,,Ligament Fracture,3,3
+4,Paul Parker,07/21/2020,St Cloud,,COVID,4,4
+5,Ross Geller,09/14/2021,Minneapolis,,Paralysis,5,5
+6,Rachel Cooper,11/23/2021,Duluth,,COVID,6,6
+7,Buddy Green,03/12/2021,St Paul,,Glaucoma,7,7
+8,Andy Sharma,02/14/2021,St Cloud,,Nose bleed,8,8
+9,Joseph King,04/12/2022,Sartell,,COVID,9,9
+10,Taylor Wong,04/30/2022,Waite Park,,COVID,10,10
+1000,Mona Smith,09-09-9090,ktm,Merina Gautam,cancer,1,1
+30153,Elijan Hank,80-80-80,hfkjdsh,,lfhsdkf,2,6

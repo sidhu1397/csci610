@@ -1,0 +1,64 @@
+#check if patient is present in patient table or not first
+name_regex="[^a-zA-Z ]+"
+number_regex="[^0-9]+"
+# location_regex="[A-Za-z0-9'\.\-\s\,]" //this is advanced regex for location
+location_regex="[^a-zA-Z ]+"
+
+echo "Please add the following patient details"
+echo "Enter patient id"
+read patient_id
+
+if [[ "$patient_id" =~ $number_regex ]]
+then
+echo "please enter a valid id"
+exit 1
+fi
+
+echo "Enter admitted date(mm-dd-yyyy)"
+read admitted_date
+
+echo "Enter location"
+read location
+
+if [[ "$location" =~ $location_regex ]]
+then
+echo "please enter a valid location"
+exit 1
+fi
+
+echo "Enter diagnosis"
+read diagnosis
+
+echo "Enter doctor id"
+read doctor_id
+
+if [[ "$doctor_id" =~ $number_regex ]]
+then
+echo "please enter a valid id"
+exit 1
+fi
+
+# https://stackoverflow.com/questions/18648345/saving-awk-output-to-variable
+patient_name=`ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v patient_id="$patient_id" '{if ( $1 == patient_id ) {
+    patient_name = $2;
+    print patient_name;
+    }}' patients.csv `
+
+
+#ADD RECORDS
+filename=admitted_patients.csv
+#Check if file ends with new line and add records appropriately
+if [ ! -s "$filename" ]; then
+  printf "%s%s%s%s%s\n" $RANDOM,$patient_name,$admitted_date,$location,$doctor_name,$diagnosis,$patient_id,$doctor_id >> $filename
+elif [ -z "$(tail -c 1 <"$filename")" ]; then
+  printf "%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date",$location,"$doctor_name",$diagnosis,$patient_id,$doctor_id >> $filename
+else
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date",$location,"$doctor_name",$diagnosis,$patient_id,$doctor_id >> $filename
+fi
+
+
+# awk -F, -v patient_name="$patient_name" -v admitted_date="$admitted_date" -v location="$location" -v diagnosis="$diagnosis" -v patient_id="$patient_id" -v doctor_id="$doctor_id" 'BEGIN{OFS=FS} {
+#     if ($1 == doctor_id) {
+#     doctor_name = $2;
+#     print $1 = '$RANDOM', $2 = patient_name, $3=admitted_date, $4=location, $5 = doctor_name, $6=diagnosis, $7=patient_id, $8=doctor_id;
+# }}' doctors.csv >> admitted_patients.csv

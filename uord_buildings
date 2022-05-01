@@ -85,3 +85,27 @@ awk -F, -v building_id="$building_id" -v building_name="$building_name" -v build
 
 echo "Building's record updated!"
 fi
+
+#----------------------------------------------
+
+
+elif [[ "$choice" -eq 2 ]]
+then
+#Delete building
+echo "Enter building's id"
+read building_id
+echo " Do you want to proceed with deleting building's record for ID $id(y/n)"
+read c1
+if [ "$c1" = y ]
+then
+awk -v building_id=$building_id -F, '$1 != building_id' buildings.csv > buildings.tmp && mv buildings.tmp buildings.csv
+echo "Record deleted!"
+else
+echo "Record not deleted..."
+fi
+#---------------------------------------------
+
+else
+echo "Incorrect Entry"
+#--------------------------------------------
+fi

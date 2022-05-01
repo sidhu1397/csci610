@@ -1,6 +1,6 @@
 # creating a menu with the following options
 echo "SELECT YOUR FAVORITE FRUIT";
-echo "1. Add a Dcotor"
+echo "1. Add a Doctor"
 echo "2. Add a patient record"
 echo "3. Update or delete patient record"
 echo "4. Update or delete doctor record"
@@ -8,6 +8,10 @@ echo "5. Display doctor record"
 echo "6. Display patient record"
 echo "7. Add a Building"
 echo "8. Update or delete Building record"
+echo "9. Add admitted patient"
+echo "10. Update or delete admitted patient"
+echo "11. Add pharmacy"
+echo "12. Update or delete pharmacy"
 echo "99. exit"
 echo -n "Enter your menu choice [1-99]: "
 
@@ -43,6 +47,14 @@ case $choice in
      ./display_patients;;
   8) echo "You have selected option 8"
       ./uord_buildings;;
+  9) echo "You have selected option 9"
+      ./add_admitted_patient;;
+ 10) echo "You have selected option 10"
+      ./uord_admitted_patient;; 
+ 11) echo "You have selected option 11"
+      ./add_pharmacy;;
+ 12) echo "You have selected option 11"
+      ./uord_pharmacy;;
 # pattern exit
   99) echo "Exiting Menu"   
       exit;;
