@@ -1,0 +1,28 @@
+#validate room id
+
+validate_room_id()
+{
+nfound=0
+IFS=$'\n'
+#get name array
+namearray=($(nawk -F, '{print $1}' rooms.csv))
+for n in "${namearray[@]}"
+do
+  if [[ "$1" = "$n" ]]
+  then
+     nfound=1
+     echo "room Found"
+     return 1
+  fi
+done
+
+if [[ $nfound -eq 0 ]]
+then
+ echo "room not found"
+ echo "room id is not in the database.Please enter a valid room id"
+ return 0
+fi
+}
+
+validate_room_id $1
+

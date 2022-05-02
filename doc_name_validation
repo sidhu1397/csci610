@@ -1,0 +1,29 @@
+#validate doctor name
+
+validate_doc_name()
+{
+
+echo $1
+nfound=0
+IFS=$'\n'
+#get name array
+namearray=($(nawk -F, '{print $2}' doctors.csv))
+for n in "${namearray[@]}"
+do
+  if [[ "$1" = "$n" ]]
+  then
+     nfound=1
+     echo "Doc name Found"
+     return 1
+  fi
+done
+
+if [[ $nfound -eq 0 ]]
+then
+ echo "Doc name not found"
+ return 0
+fi
+}
+
+validate_doc_name "$1"
+

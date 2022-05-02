@@ -1,0 +1,29 @@
+#validate admitted patient location
+
+validate_location()
+{
+
+echo $1
+nfound=0
+IFS=$'\n'
+#get name array
+namearray=("St Cloud" "Minneapolis" "St Paul" "Duluth" "Sartell" "Waite Park")
+for n in "${namearray[@]}"
+do
+  if [[ "$1" = "$n" ]]
+  then
+     nfound=1
+     echo "valid location Found"
+     return 1
+  fi
+done
+
+if [[ $nfound -eq 0 ]]
+then
+ echo "location is not valid. please enter from this list(St Cloud Minneapolis St Paul Duluth Sartell Waite Park)"
+ return 0
+fi
+}
+
+validate_location "$1"
+

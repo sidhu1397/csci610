@@ -1,0 +1,29 @@
+#validate doctor speciality
+
+validate_doc_speciality()
+{
+
+echo $1
+nfound=0
+IFS=$'\n'
+#get name array
+namearray=("Pediatrics" "Orthopedics" "Surgery" "Cardiology" "Physician" "Radiology" "Nursing" "Teacher" "Neurology")
+for n in "${namearray[@]}"
+do
+  if [[ "$1" = "$n" ]]
+  then
+     nfound=1
+     echo "Doc speciality Found"
+     return 1
+  fi
+done
+
+if [[ $nfound -eq 0 ]]
+then
+ echo "Doc speciality not found"
+ return 0
+fi
+}
+
+validate_doc_speciality "$1"
+
