@@ -1,11 +1,11 @@
-building_id,building_name,address,number_of_rooms,building_manager,constructed_year,department,dummy
-1,ECC,Kathmadu,9,Petzold,1999,CSCI,0
-2,H2,4th Avenue,13,Helen,2001,Cardiology,0
-3,H3,5th Avenue,20,Kevin,2001,ENT,0
-4,H4,6th Avenue,3,Jack,2001,Ortho,0
-5,H5,8th Avenue,6,Amber,2003,Pediatric,0
-6,H6,8th Street,9,John,2003,Radiology,0
-7,H7,2nd Avenue,8,Joe,2001,OPD,0
-8,H8,4th Avenue,11,Donald,2001,Pharmacy,0
-9,H9,3rd Street,2,Micheal,2003,Neurology,0
-10,H10,5th Street,5,David,2003,Nursing,0
+building_id,building_name,address,number_of_rooms,building_manager,constructed_year,department
+1,ECC,Kathmadu,9,Petzold,1999,CSCI
+2,H2,4th Avenue,13,Helen,2001,Cardiology
+3,H3,5th Avenue,20,Kevin,2001,ENT
+4,H4,6th Avenue,3,Jack,2001,Ortho
+5,H5,8th Avenue,6,Amber,2003,Pediatric
+6,H6,8th Street,9,John,2003,Radiology
+7,H7,2nd Avenue,8,Joe,2001,OPD
+8,H8,4th Avenue,11,Donald,2001,Pharmacy
+9,H9,3rd Street,2,Micheal,2003,Neurology
+10,H10,5th Street,5,David,2003,Nursing

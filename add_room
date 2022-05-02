@@ -54,11 +54,11 @@ fi
 filename=rooms.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,$room_type,$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$room_type",$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
 elif [ -z "$(tail -c 1 <"$filename")" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,$room_type,$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$room_type",$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
 else
-  printf "\n%s%s%s%s%s\n" $RANDOM,$room_type,$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$room_type",$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
 fi
 
 echo "\n##### Room's details added! #####\n"

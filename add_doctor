@@ -50,11 +50,11 @@ fi
 filename=doctors.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,$doc_name,$doc_speciality,$doc_office,$doc_qualification >> doctors.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$doc_name","$doc_speciality","$doc_office","$doc_qualification" >> doctors.csv
 elif [ -z "$(tail -c 1 <"$filename")" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,"$doc_name","$doc_speciality",$doc_office,$doc_qualification >> doctors.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$doc_name","$doc_speciality","$doc_office","$doc_qualification" >> doctors.csv
 else
-  printf "\n%s%s%s%s%s\n" $RANDOM,"$doc_name","$doc_speciality",$doc_office,$doc_qualification >> doctors.csv
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$doc_name","$doc_speciality","$doc_office","$doc_qualification" >> doctors.csv
 fi
 
 echo "\n##### Doctor's details added! #####\n"

@@ -39,7 +39,7 @@ case $operation_choice in
        esac;;
 
   2)  echo "On which table do you want to EDIT the data?"
-      echo "1. Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy 7. Pharmacy Presrciptions"  
+      echo "1. Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy"  
       echo -n "Please enter the corresponding number: "
       read choice
   
@@ -60,7 +60,7 @@ case $operation_choice in
        esac;;  
       
    3) echo "On which table do you want to DELETE the data?"
-      echo "1. Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy 7. Pharmacy Presrciptions"  
+      echo "1. Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy"  
       echo -n "Please enter the corresponding number: "
       read choice
   
@@ -81,7 +81,7 @@ case $operation_choice in
        esac;;
 
     4) echo "Which table related SEARCH would you like to perform?"
-       echo "1.Doctor 2. Patient 3. Buildings & Rooms 4. Pharmacy"  
+       echo "1.Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy"  
        echo -n "Please enter the corresponding number: "
        read choice
 
@@ -90,27 +90,10 @@ case $operation_choice in
                 ./display_doctors;;
             2) echo "You have chosen PATIENT."    
                 ./display_patients;;
-<<<<<<< HEAD
             3) echo "You have chosen BUILDING & Rooms."
                 ./display_rooms;;
             4) echo "You have chosen PHARMACY."
                 ./display_pharmacy;;
-=======
-            3) echo "You have chosen ADMITTED PATIENT"
-               echo "1. Search patient by admission date" 
-               echo "2. Search patient by surgery date" 
-               read choice
-                    case $choice in
-                        1) ./search_patient_admission_date;;
-                        2) ./search_patient_surgery_date;; 
-                    esac;;
-            4) echo "You have chosen BUILDING";;
-
-            5) echo "You have chosen ROOM";;
-
-            6) echo "You have chosen PHARMACY";;
-
->>>>>>> e6275ce40fa03cca231d5c397902fc302dfc8a54
             *) echo "Invalid option";;
         esac;;    
 
@@ -119,12 +102,7 @@ case $operation_choice in
     *) echo "Invalid option"
   
 esac
-<<<<<<< HEAD
   echo "Redirecting to Main Menu"
   ./menu
   exit 1
-=======
-  ./menu  
->>>>>>> e6275ce40fa03cca231d5c397902fc302dfc8a54
-  echo -n "Enter your menu choice [1-99]: "
 done

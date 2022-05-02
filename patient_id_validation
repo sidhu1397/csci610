@@ -25,4 +25,3 @@ fi
 }
 
 validate_patient $1
-

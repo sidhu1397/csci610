@@ -29,29 +29,37 @@ read contact
 
 if [[ "$contact" =~ $phone_regex ]]
 then 
-echo "Please enter a valid contact number in xxx-xxx-xxxx format"
-exit 1
-fi
 
 echo "Enter email for the patient"
 read email
 
 if [[ "$email" =~ $email_regex ]]
 then 
-echo "Please enter a valid email od in xxxx@xxxx.xxx format"
-exit 1
-fi
-
 
 #ADD RECORDS
 filename=patients.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,$p_name,"$department","$contact","$email" >> patients.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$p_name","$department","$contact","$email" >> patients.csv
 elif [ -z "$(tail -c 1 <"$filename")" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,$p_name,"$department","$contact","$email" >> patients.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$p_name","$department","$contact","$email" >> patients.csv
 else
-  printf "\n%s%s%s%s%s\n" $RANDOM,$p_name,"$department","$contact","$email" >> patients.csv
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$p_name","$department","$contact","$email" >> patients.csv
 fi
 
 echo "\n##### Patient's details added! #####\n"
+
+else
+echo "Please enter a valid email id in xxxx@xxxx.xxx format"
+exit 1
+fi
+
+
+else
+echo "Please enter a valid contact number in xxx-xxx-xxxx format"
+exit 1
+fi
+
+
+
+

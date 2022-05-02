@@ -1,11 +1,12 @@
-ap_id,name,admitted_date,location,doctor,diagnosis,patient_id,doctor_id,surgery_status,surgery_date,room_id,dummy
-1,Mona Smith,2022-02-02,Kathmandu,Johnny Depp,COVIDDD,1,3,completed,2022-02-22,1,0
-2,Elijan Hank,2019-08-12,St Cloud,Eva Smith,COVID,2,6,completed,2019-08-29,8,0
-3,Bill Scott,2020-04-30,Minneapolis,Harrison Ford,Ligament Fracture,3,2,completed,2020-05-10,6,0
-4,Pearl Buck,2020-07-21,St Cloud,Eva Smith,COVID,4,6,completed,2020-07-25,8,0
-5,Tina Fey,2021-09-14,Minneapolis,Bell Griffin,Paralysis,5,10,completed,2021-09-19,9,0
-6,Sam Tucker,2021-11-23,Duluth,Eva Smith,COVID,6,6,completed,2021-11-30,8,0
-7,Alex Parker,2021-03-12,St Paul,Kevin Bacon,Glaucoma,7,7,completed,2021-03-15,3,0
-8,Buddy Green,2021-02-14,St Cloud,Sofia Swanson,Nose bleed,8,8,completed,2021-02-19,3,0
-9,Monika Geller,2022-04-12,Sartell,Eva Smith,COVID,9,6,pending,2022-05-5,8,0
-10,Bob Jones,2022-04-30,Waite Park,Eva Smith,COVID,10,6,pending,2022-05-10,8,0
+ap_id,name,admitted_date,location,doctor,diagnosis,patient_id,doctor_id,surgery_status,surgery_date,room_id
+1,Bill Scott,2022-02-02,Kathmandu,Johnny Depp,COVIDDD,1,1,Incomplete,2022-02-22,1
+2,Mike Foley,2019-08-12,St Cloud,,COVID,2,2,completed,2019-08-29,8
+3,Rob Jones,2020-04-30,Minneapolis,,Ligament Fracture,3,3,completed,2020-05-10,6
+4,Paul Parker,2020-07-21,St Cloud,,COVID,4,4,completed,2020-07-25,8
+5,Ross Geller,2021-09-14,Minneapolis,,Paralysis,5,5,completed,2021-09-19,9
+6,Rachel Cooper,2021-11-23,Duluth,,COVID,6,6,completed,2021-11-30,8
+7,Buddy Green,2021-03-12,St Paul,,Glaucoma,7,7,completed,2021-03-15,3
+8,Andy Sharma,2021-02-14,St Cloud,,Nose bleed,8,8,completed,2021-02-19,3
+9,Joseph King,2022-04-12,Sartell,,COVID,9,9,pending,2022-05-5,8
+10,Taylor Wong,2022-04-30,Waite Park,,COVID,10,10,pending,2022-05-10,8
+28448,Mona Smith,2020-05-21,StCloud,,COVID,1,1,Completed,2022-05-12,2
