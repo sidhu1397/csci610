@@ -1,11 +1,14 @@
-r_id,type,size_sq_ft,number_of_beds,building_id
-1,Emergency,20,20,1
-2,Delivery,12,5,2
-3,Consulting,10,5,3
-4,ICU,15,7,4
-5,Surgery,15,6,5
-6,Pharmacy,30,0,6
-7,Ward,40,25,7
-8,Day Care,30,20,8
-9,Deluxe,10,2,9
-10,Suite,15,1,10
+r_id,type,number_of_rooms,occupied_rooms,free_rooms,building_id,dummy
+1,General,20,20,0,1,0
+2,Delivery,12,5,7,5,0
+11,General,15,5,10,5,0
+3,Consulting,10,5,5,3,0
+4,ICU,15,7,8,4,0
+5,Surgery,15,6,9,5,0
+6,Surgery,5,2,3,6,0
+7,Ward,40,25,15,7,0
+8,Day Care,30,20,10,8,0
+9,Deluxe,10,2,8,9,0
+10,Suite,15,1,14,10,0
+12,Surgery,5,1,4,2,0
+13,General,10,7,3,2,0
