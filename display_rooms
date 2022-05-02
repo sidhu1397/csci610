@@ -1,0 +1,94 @@
+echo "Select a choice"
+echo "1. search available rooms"
+echo "2. Display building information"
+echo "3. Display rooms by room category"
+echo "4. Return building admin details"
+read ch
+
+#-----------------search free rooms--------------------------------------------
+if [[ ch -eq 1 ]]
+then
+echo "Select a building"
+echo "1.CSCI"
+echo "2.Cardiology"
+echo "3.ENT"
+echo "4.Ortho"
+echo "5.Pediatric"
+echo "6.Radiology"
+echo "7.OPD"
+echo "8.Pharmacy"
+echo "9.Neurology"
+echo "10.Nursing"
+read ch1
+
+bid=`nawk -v ch1="$ch1" -F, 'BEGIN{arr[1]="CSCI";arr[2]="Cardiology";arr[3]="ENT";arr[4]="Ortho";arr[5]="Pediatric";arr[6]="Radiology";arr[7]="OPD";arr[8]="Pharmacy";arr[9]="Neurology";arr[10]="Nursing";}{ if ($7 == arr[ch1]){print $1}}' buildings.csv`
+
+echo "building info"
+echo " "
+nawk -v bid="$bid" -F, '{if (NR == 1){printf "%-15s%-15s%-15s\n",$1,$2,$7}if ($1 == bid) {printf "%-15s%-15s%-15s\n",$1,$2,$7}}' buildings.csv
+echo " "
+echo "room info"
+echo " "
+nawk -v bid="$bid" -F, '{if (NR == 1){printf "%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5}if ($6 == bid) {printf "%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5}}' rooms.csv
+fi
+
+#-------------DIsplay building details----------------------------------
+if [[ ch -eq 2 ]]
+then
+echo "Select a building"
+echo "1.CSCI"
+echo "2.Cardiology"
+echo "3.ENT"
+echo "4.Ortho"
+echo "5.Pediatric"
+echo "6.Radiology"
+echo "7.OPD"
+echo "8.Pharmacy"
+echo "9.Neurology"
+echo "10.Nursing"
+read ch1
+
+if [[ $ch1 -ge 1 && $ch1 -le 10 ]]
+then
+
+bid=`nawk -v ch1="$ch1" -F, 'BEGIN{arr[1]="CSCI";arr[2]="Cardiology";arr[3]="ENT";arr[4]="Ortho";arr[5]="Pediatric";arr[6]="Radiology";arr[7]="OPD";arr[8]="Pharmacy";arr[9]="Neurology";arr[10]="Nursing";}{ if ($7 == arr[ch1]){print $1}}' buildings.csv`
+
+echo "building info"
+echo " "
+nawk -v bid="$bid" -F, '{if (NR == 1){printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7}if ($1 == bid) {printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7}}' buildings.csv
+echo " "
+echo "room info"
+echo " "
+nawk -v bid="$bid" -F, '{if (NR == 1){printf "%-15s%-15s%-15s\n",$1,$2,$3}if ($6 == bid) {printf "%-15s%-15s%-15s\n",$1,$2,$3}}' rooms.csv
+
+else
+echo "Invalid Input. Try again"
+exit 1
+fi
+fi
+
+#------------Display room by wards---------------------------------
+if [[ $ch -eq 3 ]]
+then
+echo "Select a room type"
+echo "1.General"
+echo "2.Delivery"
+echo "3.consulting"
+echo "4.ICU"
+echo "5.Surgery"
+echo "6.Day Care"
+echo "7.Deluxe"
+echo "8.Suite"
+read ch1
+
+if [[ $ch1 -ge 1 && $ch1 -le 8 ]]
+then
+
+nawk -v ch1="$ch1" -F, 'BEGIN{arr[1]="General";arr[2]="Delivery";arr[3]="Consulting";arr[4]="ICU";arr[5]="Surgery";arr[6]="Day Care";arr[7]="Deluxe";arr[8]="Suite"}
+{ if (NR == 1) {printf "%-15s%-15s%-15s%-15s%-15s%-15s\n\n",$1,$2,$3,$4,$5,$6} if ($2 == arr[ch1]) {printf "%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6} }' rooms.csv
+
+else
+echo "Invalid Input. Try again"
+exit 1
+fi
+fi

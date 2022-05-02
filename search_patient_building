@@ -1,0 +1,30 @@
+echo "Select a building"
+echo "1.CSCI"
+echo "2.Cardiology"
+echo "3.ENT"
+echo "4.Ortho"
+echo "5.Pediatric"
+echo "6.Radiology"
+echo "7.OPD"
+echo "8.Pharmacy"
+echo "9.Neurology"
+echo "10.Nursing"
+
+read ch1
+
+if [[ $ch1 -ge 1 && $ch1 -le 10 ]]
+then
+
+bid=`nawk -v ch1="$ch1" -F, 'BEGIN{arr[1]="CSCI";arr[2]="Cardiology";arr[3]="ENT";arr[4]="Ortho";arr[5]="Pediatric";arr[6]="Radiology";arr[7]="OPD";arr[8]="Pharmacy";arr[9]="Neurology";arr[10]="Nursing";}{ if ($7 == arr[ch1]){print $1}}' buildings.csv`
+
+rid_arr=($(nawk -v bid="$bid" -F, '{if ($6 == bid) {print $1}}' rooms.csv))
+
+rid_str="${rid_arr[@]}"
+nawk -F, -v rid_str="$rid_str" 'BEGIN{split(rid_str,rid_arr," ")}{ for(id in rid_arr) 
+{if (NR == 1) {printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11;}  
+if ($11 == rid_arr[id]) { printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11;} } }' admitted_patients.csv
+
+else
+echo "Invalid Entry. Try again"
+exit 1
+fi
