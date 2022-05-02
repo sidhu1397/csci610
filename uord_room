@@ -1,0 +1,87 @@
+q#!/bin/bash
+echo "Select your choice"
+echo "1.Update a room's full record"
+echo "2.Delete room's record"
+read choice
+
+if [[ "$choice" -eq 1 ]]
+then
+#Update code
+room_regex="[^a-zA-Z0-9 ]+"
+number_regex="[^0-9 ]+"
+
+echo "Please add the following room details"
+
+echo "Enter room's id to edit"
+read room_id
+
+echo "Enter new room type"
+read room_type
+
+if [[ "$room_type" =~ $room_regex ]]
+then
+echo "Please enter a valid room type"
+exit 1
+fi
+
+echo "Enter room size"
+read room_size
+
+if [[ "$room_size" =~ $number_regex ]]
+then
+echo "Please enter a size in sq. ft."
+exit 1
+fi
+
+echo "Enter no. of beds in the room"
+read no_of_beds
+
+if [[ "$no_of_beds" =~ $number_regex ]]
+then
+echo "Please enter a number of beds"
+exit 1
+fi 
+
+echo "Enter the building id"
+read building_id
+
+if [[ "$building_id" =~ $number_regex ]]
+then
+echo "Please enter a valid building id"
+exit 1
+fi
+
+
+#UPDATE BUILDING
+
+awk -F, -v room_id="$room_id" -v room_type="$room_type" -v room_size="$room_size" -v no_of_beds="$no_of_beds" -v building_id="$building_id" 'BEGIN {OFS=FS} {
+   if($1 == room_id) {
+    $2=room_type;
+    $3=room_size;
+    $4=no_of_beds;
+    $5=building_id;
+    }
+    }1' rooms.csv > rooms.tmp && mv rooms.tmp rooms.csv
+
+echo "Room's record updated!"
+
+elif [[ "$choice" -eq 2 ]]
+then
+#Delete Room
+echo "Enter room's id"
+read room_id
+echo " Do you want to proceed with deleting room's record for ID $id(y/n)"
+read c1
+if [ "$c1" = y ]
+then
+awk -v room_id=$room_id -F, '$1 != room_id' rooms.csv > rooms.tmp && mv rooms.tmp rooms.csv
+echo "Record deleted!"
+else
+echo "Record not deleted..."
+fi
+#---------------------------------------------
+
+else
+echo "Incorrect Entry"
+#--------------------------------------------
+fi

@@ -1,0 +1,40 @@
+phone_regex="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+date_regex="^[0-9]{4}-(01|02|03|04|05|06|07|08|09|10|11|12)-(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)"
+email_regex="^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+
+echo "Enter patient phone number(xxx-xxx-xxxx)"
+read phone
+
+if [[ "$phone" =~ $phone_regex ]]
+then
+echo " phone passed"
+else
+echo "Phone number is not in proper format(xxx-xxx-xxxx)"
+exit 1
+fi
+
+
+echo "Enter patient DOB(YYYY-MM-DD)"
+read dob
+
+if [[ "$dob" =~ $date_regex ]]
+then
+echo " date passed"
+else
+echo "date of birth is not in proper format(YYYY-MM-DD)"
+exit
+fi
+
+
+echo "ENTER pAITENT email"
+read email
+
+if [[ "$email" =~ $email_regex ]]
+then
+echo "email passed"
+else
+echo "email failed"
+exit
+fi
+
+
