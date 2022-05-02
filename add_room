@@ -3,7 +3,7 @@ type_regex="[^a-zA-Z ]+"
 number_regex="[^0-9 ]+"
 building_id_regex="[^0-9]+"
 
-echo "Please add the following room details"
+echo "Please add the following room details...\n"
 
 echo "Enter room type"
 read room_type
@@ -54,11 +54,11 @@ fi
 filename=rooms.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,$room_type,$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$room_type",$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
 elif [ -z "$(tail -c 1 <"$filename")" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,$room_type,$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$room_type",$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
 else
-  printf "\n%s%s%s%s%s\n" $RANDOM,$room_type,$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$room_type",$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
 fi
 
-echo " Room's details added! "
+echo "\n##### Room's details added! #####\n"

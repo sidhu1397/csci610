@@ -5,24 +5,23 @@ validate_patient()
 nfound=0
 IFS=$'\n'
 #get name array
-namearray=($(nawk -F, '{print $1}' patients.csv))
+namearray=($(awk -F, '{print $1}' patients.csv))
 for n in "${namearray[@]}"
 do
   if [[ "$1" = "$n" ]]
   then
      nfound=1
-     echo "patient Found"
+     echo "Patient Found!"
      return 1
   fi
 done
 
 if [[ $nfound -eq 0 ]]
 then
- echo "patient not found"
- echo "Patient id is not in the database.Please enter a valid patient id"
+ echo "Patient not found!"
+ echo "Patient id is not in the database!"
  return 0
 fi
 }
 
 validate_patient $1
-

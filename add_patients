@@ -1,14 +1,15 @@
 #Regex Check
 name_regex="[^a-zA-Z ]+"
 department_regex="[^a-zA-Z ]+"
-doc_name_regex="[^a-zA-Z ]+"
-doc_id_regex="[^0-9]+"
+phone_regex="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+email_regex="^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
 
-echo "Please add the following patient details"
+echo "Please add the following patient details...\n"
+
 echo "Enter patient name"
-read patient_name
+read p_name
 
-if [[ "$patient_name" =~ $name_regex ]]
+if [[ "$p_name" =~ $name_regex ]]
 then
 echo "Please enter a valid name"
 exit 1
@@ -23,35 +24,42 @@ echo "Please enter a valid department"
 exit 1
 fi
 
-echo "Enter doctor's name for patient"
-read doctor_name
+echo "Enter contact number for the patient(xxx-xxx-xxxx)"
+read contact
 
-if [[ "$doctor_name" =~ $doc_name_regex ]]
-then
-echo "Please enter a valid name"
-exit 1
-fi 
-#Might have to do ask doctor_id and get doctor name from doctor table based on id
-#Might have to do ask doctor_id and get doctor name from doctor table based on id
-echo "Enter doc id"
-read doctor_id
+if [[ "$contact" =~ $phone_regex ]]
+then 
 
-if [[ "$doctor_id" =~ $doc_id_regex ]]
-then
-echo "Please enter a valid doc id"
-exit 1
-fi
+echo "Enter email for the patient"
+read email
 
+if [[ "$email" =~ $email_regex ]]
+then 
 
 #ADD RECORDS
 filename=patients.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,$patient_name,"$department",$doctor_name,$doctor_id >> patients.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$p_name","$department","$contact","$email" >> patients.csv
 elif [ -z "$(tail -c 1 <"$filename")" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,$patient_name,"$department",$doctor_name,$doctor_id >> patients.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$p_name","$department","$contact","$email" >> patients.csv
 else
-  printf "\n%s%s%s%s%s\n" $RANDOM,$patient_name,"$department",$doctor_name,$doctor_id >> patients.csv
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$p_name","$department","$contact","$email" >> patients.csv
 fi
 
-echo " Patient's details added! "
+echo "\n##### Patient's details added! #####\n"
+
+else
+echo "Please enter a valid email id in xxxx@xxxx.xxx format"
+exit 1
+fi
+
+
+else
+echo "Please enter a valid contact number in xxx-xxx-xxxx format"
+exit 1
+fi
+
+
+
+

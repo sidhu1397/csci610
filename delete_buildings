@@ -1,12 +1,12 @@
 #Delete building
 echo "Enter building's id"
 read building_id
-echo " Do you want to proceed with deleting building's record for ID $id(y/n)"
+echo " Do you want to proceed with deleting building's record for ID $building_id? (y/n)"
 read c1
 if [ "$c1" = y ]
 then
 awk -v building_id=$building_id -F, '$1 != building_id' buildings.csv > buildings.tmp && mv buildings.tmp buildings.csv
-echo "Record deleted!"
+echo ">>>>>Record deleted!<<<<<\n"
 else
-echo "Record not deleted..."
+echo "Record not deleted...\n"
 fi

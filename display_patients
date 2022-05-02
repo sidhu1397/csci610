@@ -29,6 +29,9 @@ done
 if [[ $nfound -eq 0 ]]
 then
  echo "Patient name is not in the database.Please enter a valid patient name"
+ echo "---------------------------------------------------------------------"
+ echo "Redirecting to Main Menu"
+./menu
  exit 1
 fi
 
@@ -57,7 +60,9 @@ nawk -v ch1="$ch1" -F, 'BEGIN{arr[1]="St Cloud";arr[2]="Minneapolis";arr[3]="St 
 
 else
 echo "Invalid input.try again."
+./menu
 exit 1
+
 fi
 
 fi
@@ -83,6 +88,7 @@ done
 if [[ $nfound -eq 0 ]]
 then
  echo "Doctor name is not in the database.Please enter a valid patient name"
+ ./menu
  exit 1
 fi
 

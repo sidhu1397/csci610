@@ -1,12 +1,12 @@
 #Delete Doctor
 echo "Enter doctor's id"
 read doc_id
-echo " Do you want to proceed with deleting doctor's record for ID $id(y/n)"
+echo " Do you want to proceed with deleting doctor's record for ID $doc_id? (y/n)"
 read c1
 if [ "$c1" = y ]
 then
 awk -v doc_id=$doc_id -F, '$1 != doc_id' doctors.csv > doctors.tmp && mv doctors.tmp doctors.csv
-echo "Record deleted!"
+echo ">>>>>Record deleted!<<<<<\n"
 else
-echo "Record not deleted..."
+echo "Record not deleted...\n"
 fi

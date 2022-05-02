@@ -25,4 +25,3 @@ fi
 }
 
 validate_room_id $1
-

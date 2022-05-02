@@ -1,24 +1,30 @@
-q#!/bin/bash
-echo "Select your choice"
-echo "1.Update a patient's full record"
-echo "2.Delete patient's record"
-read choice
-
-if [[ "$choice" -eq 1 ]]
-then
-#Update code
-patient_regex="[^a-zA-Z0-9 ]+"
-number_regex="[^0-9 ]+"
+name_regex="[^a-zA-Z ]+"
+department_regex="[^a-zA-Z ]+"
+phone_regex="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+email_regex="^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
 
 echo "Please add the following patient details"
 
 echo "Enter patient's id to edit"
 read patient_id
 
-echo "Enter new patient name"
-read patient_name
+./patient_id_validation $patient_id
+if [[ $? == 0 ]] 
+then
+    ./menu
+    exit
+fi
 
-if [[ "$patient_name" =~ $patient_regex ]]
+echo "Enter new patient name"
+read p_name
+
+if [[ "$p_name" =~ $name_regex ]]
+then
+echo "Please enter a valid name"
+exit 1
+fi
+
+if [[ "$p_name" =~ $name_regex ]]
 then
 echo "Please enter a valid name"
 exit 1
@@ -33,43 +39,34 @@ echo "Please enter a valid department"
 exit 1
 fi
 
-echo "Enter doctor's name for patient"
-read doctor_name
+echo "Enter contact number for the patient(xxx-xxx-xxxx)"
+read contact
 
-if [[ "$doctor_name" =~ $doc_name_regex ]]
-then
-echo "Please enter a valid name"
+if [[ "$contact" =~ $phone_regex ]]
+then 
+echo "Please enter a valid contact number in xxx-xxx-xxxx format"
 exit 1
-fi 
-#Might have to do ask doctor_id and get doctor name from doctor table based on id
-#Might have to do ask doctor_id and get doctor name from doctor table based on id
-echo "Enter doc id"
-read doctor_id
+fi
 
-if [[ "$doctor_id" =~ $doc_id_regex ]]
-then
-echo "Please enter a valid doc id"
+echo "Enter email for the patient"
+read email
+
+if [[ "$email" =~ $email_regex ]]
+then 
+echo "Please enter a valid email od in xxxx@xxxx.xxx format"
 exit 1
 fi
 
 
 #UPDATE BUILDING
 
-awk -F, -v patient_id="$patient_id" -v patient_name="$patient_name" -v department="$department" -v doctor_name="$doctor_name" -v doctor_id="$doctor_id" 'BEGIN {OFS=FS} {
+awk -F, -v patient_id="$patient_id" -v p_name="$p_name" -v department="$department" -v contact="$contact" -v email="$email" 'BEGIN {OFS=FS} {
    if($1 == patient_id) {
     $2=patient_name;
     $3=department;
-    $4=doctor_name;
-    $5=doctor_id;
+    $4=contact;
+    $5=email;
     }
     }1' patients.csv > patients.tmp && mv patients.tmp patients.csv
 
-echo "Patient's record updated!"
-
-#----------------------------------------------
-
-
-else
-echo "Incorrect Entry"
-#--------------------------------------------
-fi
+echo "\n##### Patient's records with id $patient_id updated! #####\n"
