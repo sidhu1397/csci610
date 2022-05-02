@@ -1,0 +1,111 @@
+echo "Select a choice"
+echo "1. search patient by name"
+echo "2. search patient by locations"
+echo "3. search patient by doctor"
+echo "4. search patient by admission date"
+echo "5. search patient by surgery date"
+echo "6. display all patients with admission details"
+read choice
+if [[ $choice -eq 1 ]]
+then
+echo "Enter patient name"
+read name
+
+#validate name
+nfound=0
+IFS=$'\n'
+#get name array
+namearray=($(nawk -F, '{print $2}' patients.csv))
+for n in "${namearray[@]}"
+do
+  if [[ "$name" = "$n" ]]
+  then
+     nfound=1
+  fi
+done
+
+if [[ $nfound -eq 0 ]]
+then
+ echo "Patient name is not in the database.Please enter a valid patient name"
+ exit 1
+fi
+
+#SHOW RECORDS
+nawk -v name="$name" -F, 'BEGIN{NR==1}{ if ($2 == name) {printf "%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4;}}' patients.csv
+
+fi
+
+#-----------------search patient by location-------------------
+if [[ $choice -eq 2 ]]
+then
+echo "Select a location"
+echo "1. St Cloud"
+echo "2. Minneapolis"
+echo "3. St Paul"
+echo "4. Duluth"
+echo "5. Sartell"
+echo "6. Waite Park"
+
+read ch1
+
+if [[ $ch1 -ge 1 && $ch1 -le 6 ]]
+then
+echo "condition passed"
+nawk -v ch1="$ch1" -F, 'BEGIN{arr[1]="St Cloud";arr[2]="Minneapolis";arr[3]="St Paul";arr[4]="Duluth";arr[5]="Sartell";arr[6]="Waite Park"}{if ($4 == arr[ch1]){print $0}}' admitted_patients.csv
+
+else
+echo "Invalid input.try again."
+exit 1
+fi
+
+fi
+
+#--------------Search patient by doctor------------------------
+if [[ $choice -eq 3 ]]
+then
+echo "Enter doctor's name"
+read name
+IFS=$'\n'
+#validate name
+nfound=0
+namearray=($(nawk -F, '{print $2}' doctors.csv))
+
+for n in "${namearray[@]}"
+do
+  if [[ "$name" = "$n" ]]
+  then
+     nfound=1
+  fi
+done
+
+if [[ $nfound -eq 0 ]]
+then
+ echo "Doctor name is not in the database.Please enter a valid patient name"
+ exit 1
+fi
+
+#SHow Records
+nawk -v name="$name" -F, 'BEGIN{found=0}{if (NR==1) {printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7;} if ($5 == name) {printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7;found++}}END{if(found == 0){print "No patients are handled by doctor", name}}' admitted_patients.csv
+#SHow patient general record
+#get patient id
+
+statusarray=($(nawk -v name="$name" -F, 'BEGIN{found=0}{if ($5 == name) {printf $7;found++}}' admitted_patients.csv))
+for n in "${statusarray[@]}"
+do
+echo $n
+done
+echo "General patient details"
+nawk -F, -v statusarray="${statusarray[@]}" '{if (NR == 1){print $0}if ($1 == statusarray) {print $0} }' patients.csv
+
+fi
+#----------------------Search Patient by Admission date---------------------
+if [[ $choice -eq 4 ]]
+then
+./search_patient_admission_date 
+fi
+
+#---------------------search patient by surgery date----------------------
+if [[ $choice -eq 5 ]]
+then
+./search_patient_surgery_date
+fi

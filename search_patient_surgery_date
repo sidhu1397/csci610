@@ -1,0 +1,61 @@
+echo "Select a choice"
+echo "1. Display patients pending for surgery"
+echo "2. Display patients underwent surgery"
+echo "3. Filter patients by surgery date"
+read ch
+
+if [[ $ch -eq 1 ]]
+then
+echo ""
+nawk -F, '$9 == "pending" || $9 == "surgery_status" {print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10} ' admitted_patients.csv
+fi
+
+if [[ $ch -eq 2 ]]
+then
+echo ""
+nawk -F, '$9 == "completed" || $9 == "surgery_status" {print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10} ' admitted_patients.csv
+fi
+
+if [[ $ch -eq 3 ]]
+then
+echo "enter year to filter"
+read year
+echo "do you want to filter based on month(y/n)?"
+read ch1
+if [[ $ch1 == "y" ]]
+then
+echo "enter month"
+read month
+
+if [[ ${#month} -eq 1 ]]
+then
+temp="0"$month
+month=$temp
+fi
+#validate code
+
+
+#return records
+start="$year-$month-01"
+end="$year-$month-31"
+#echo $start
+#echo $end
+nawk -v start="$start" -v end="$end" -F, 'BEGIN{found=0;}{if (NR == 1) {print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10} if($10 >= start && $10 <= end){print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10;found++}} END{ if(found == 0){print "record not found"}}' admitted_patients.csv
+
+
+elif [[ $ch1 == "n" ]]
+then
+start="$year-01-01"
+end="$year-12-31"
+echo " "
+nawk -v start="$start" -v end="$end" -F, 'BEGIN{found=0;}{if (NR == 1) {print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10} if($10 >= start && $10 <= end){print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10;found++}} END{ if(found == 0){print "record not found"}}' admitted_patients.csv
+
+
+
+else
+echo "Invalid input. Start over again"
+exit 1
+fi
+
+
+fi
