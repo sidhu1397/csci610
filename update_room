@@ -1,12 +1,3 @@
-q#!/bin/bash
-echo "Select your choice"
-echo "1.Update a room's full record"
-echo "2.Delete room's record"
-read choice
-
-if [[ "$choice" -eq 1 ]]
-then
-#Update code
 room_regex="[^a-zA-Z0-9 ]+"
 number_regex="[^0-9 ]+"
 
@@ -74,9 +65,4 @@ awk -F, -v room_id="$room_id" -v room_type="$room_type" -v number_of_rooms="$num
     }
     }1' rooms.csv > rooms.tmp && mv rooms.tmp rooms.csv
 
-echo "Room's record updated!"
-
-else
-echo "Incorrect Entry"
-
-fi
+echo "\n##### Room's records with id $room_id updated! #####\n"

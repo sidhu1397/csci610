@@ -1,7 +1,5 @@
-q#!/bin/bash
 echo "Select your choice"
 echo "1.Update a pharmacy's full record"
-echo "2.Delete pharmacy's record"
 read choice
 
 if [[ "$choice" -eq 1 ]]
@@ -43,5 +41,5 @@ awk -F, -v pharmacy_id="$pharmacy_id" -v location="$location" -v pharmacist="$ph
     }
     }1' pharmacy.csv > pharmacy.tmp && mv pharmacy.tmp pharmacy.csv
 
-echo "Pharmacy's record updated!"
+echo "Pharmacy's record with id $pharmacy_id updated!"
 fi
