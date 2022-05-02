@@ -35,11 +35,16 @@ done
 if [[ $idfound -eq 0 ]]
 then
  echo "The doctor id entered is not in the database. Please enter a valid doctor id"
+ echo "-----------------------------------------------------------------------------"
+ echo "redirecting to main menu"
+ echo "-----------------------------------------------------------------------------"
+ ./menu
  exit 1
 fi
 
 #SHOW RECORDS
 awk -v doc_id=$doc_id -F, 'NR==1 {printf "%-15s%-15s%-15s%-15s\n\n",$1,$2,$3,$4}; ($1 == doc_id) {printf "%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4;}' doctors.csv
+echo "-------------------------------------------------------------------------------------"
 
 #-----------------------------------------------------------
 #SEARCH BY SPECIALITY
@@ -71,34 +76,40 @@ done
 if [[ $sfound -eq 0 ]]
 then
  echo "No doctor can be found with speciality $speciality"
+ echo "-----------------------------------------------------------------------------"
+ echo "redirecting to main menu"
+ echo "-----------------------------------------------------------------------------"
+ ./menu
+
  exit 1
 fi
 
 #RETURN RECORDS
 awk -v speciality=$speciality -F, 'NR==1 {printf "%-15s%-15s%-15s%-15s\n\n",$1,$2,$3,$4}; ($3 == speciality) {printf "%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4;}' doctors.csv
+echo "-------------------------------------------------------------------------------------"
 
 #-----------------------------------------------------------
 elif [[ $choice -eq 3 ]]
 then
 
-echo "Enter doctor id"
-read doc_id
+echo "Enter patient id"
+read p_id
 
 #VALIDATE ID
 idfound=0
 printf -v idarray "`awk -F, '
 { 
-  awkArray[counter++] = $1; 
+  awkArray[counter++] = $7; 
 } 
 { 
   for (n=0; n<counter;n++)
     print awkArray[n],"\n"; 
-}' doctors.csv`"
+}' admitted_patients.csv`"
 idarray=($idarray)
 
 for n in "${idarray[@]}"
 do
-  if [[ "$doc_id" = "$n" ]]
+  if [[ "$p_id" = "$n" ]]
   then
      idfound=1
   fi
@@ -106,18 +117,32 @@ done
 
 if [[ $idfound -eq 0 ]]
 then
- echo "The doctor id entered is not in the database. Please enter a valid doctor id"
+ echo "The patient id entered is not in the database. Please enter a valid patient id"
+ echo "-----------------------------------------------------------------------------"
+ echo "redirecting to main menu"
+ echo "-----------------------------------------------------------------------------"
+ ./menu
+
  exit 1
 fi
 
 #RETURN RECORDS
 #awk
+doc_id=`nawk -F, -v p_id="$p_id" '{ if ($7 == p_id) {print $8}}' admitted_patients.csv`
+
+echo $doc_id
+
+nawk -F, -v doc_id="$doc_id" '{if (NR == 1) {printf "%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4;} if ($1 == doc_id) {printf "%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4;}}' doctors.csv
+echo "-------------------------------------------------------------------------------------"
+
 
 #--------------------------------------------------------------------
 #DISPLAY WHOLE RECORD OF DOCTORS
 elif [[ $choice -eq 4 ]]
 then
 awk -F',' '{OFS="|"; $1=$1; printf "%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4; }' doctors.csv
+echo "-------------------------------------------------------------------------------------"
+
 #--------------------------------------------------------------------
 else
 echo "Invalid entry"
