@@ -4,10 +4,10 @@ echo "1. ADD"
 echo "2. EDIT"
 echo "3. DELETE"
 echo "4. SEARCH"
-echo "99. exit"
+echo "99.Exit"
 echo -n "Enter your menu choice [1-99]: "
 
-# This loop will run untill select the exit option.
+# This loop will run until select the exit option.
 # User will be asked to select option again and again
 while :
 do
@@ -17,28 +17,25 @@ read operation_choice
 
 # case statement is used to compare one value with the multiple cases.
 case $operation_choice in
-  1)  echo "On which table do you want to ADD the data?"
-      echo "1. Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy 7. Pharmacy Presrciptions"  
+  1)  echo "\nOn which table do you want to ADD the data?"
+      echo "1. Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy"  
       echo -n "Please enter the corresponding number: "
       read choice
       
       case $choice in
-        1) echo "You have chosen to ADD a DOCTOR."
+        1) echo "\n##### You have chosen to ADD a DOCTOR #####\n"
 	        ./add_doctor;;
-        2) echo "You have chosen to ADD a PATIENT."    
+        2) echo "\n##### You have chosen to ADD a PATIENT #####\n"
 	        ./add_patients;;
-        3) echo "You have chosen to ADD an ADMITTED PATIENT"
+        3) echo "\n##### You have chosen to ADD an ADMITTED PATIENT #####\n"
             ./add_admitted_patient;;
-        4) echo "You have chosen to ADD a BUILDING"
+        4) echo "\n##### You have chosen to ADD a BUILDING #####\n"
             ./add_buildings;;
-        5) echo "You have chosen to ADD a ROOM"
+        5) echo "\n##### You have chosen to ADD a ROOM #####\n"
             ./add_room;;
-        6) echo "You have chosen to ADD a PHARMACY"
+        6) echo "\n##### You have chosen to ADD a PHARMACY #####\n"
             ./add_pharmacy;;
-        7) echo "You have chosen to ADD a PHARMACY PRESCRIPTION"
-            #YET TO DO THIS ONE
-            ./add_pharmacy_prescription;;
-        *) echo "Invalid option";;
+        *) echo "\n##### Invalid option! #####\n";;
        esac;;
 
   2)  echo "On which table do you want to EDIT the data?"
@@ -47,22 +44,19 @@ case $operation_choice in
       read choice
   
       case $choice in
-        1) echo "You have chosen to EDIT a DOCTOR."
+        1) echo "\n##### You have chosen to EDIT a DOCTOR #####\n"
 	        ./update_doctors;;
-        2) echo "You have chosen to EDIT a PATIENT."    
+        2) echo "\n##### You have chosen to EDIT a PATIENT #####\n"   
 	        ./update_patients;;
-        3) echo "You have chosen to EDIT an ADMITTED PATIENT"
+        3) echo "\n##### You have chosen to EDIT an ADMITTED PATIENT #####\n"
             ./update_admitted_patient;;
-        4) echo "You have chosen to EDIT a BUILDING"
+        4) echo "\n##### You have chosen to EDIT a BUILDING #####\n"
             ./update_buildings;;
-        5) echo "You have chosen to EDIT a ROOM"
+        5) echo "\n##### You have chosen to EDIT a ROOM #####\n"
             ./update_room;;
-        6) echo "You have chosen to EDIT a PHARMACY"
+        6) echo "\n##### You have chosen to EDIT a PHARMACY #####\n"
             ./update_pharmacy;;
-        7) echo "You have chosen to EDIT a PHARMACY PRESCRIPTION"
-            #YET TO DO THIS ONE
-            ./update_pharmacy_prescription;;
-        *) echo "Invalid option";;
+        *) echo "\n##### Invalid option! #####\n";;
        esac;;  
       
    3) echo "On which table do you want to DELETE the data?"
@@ -71,22 +65,19 @@ case $operation_choice in
       read choice
   
       case $choice in
-        1) echo "You have chosen to DELETE a DOCTOR."
+        1) echo "\n##### You have chosen to DELETE a DOCTOR #####\n"
 	        ./delete_doctors;;
-        2) echo "You have chosen to DELETE a PATIENT."    
+        2) echo "\n##### You have chosen to DELETE a PATIENT #####\n"  
 	        ./delete_patients;;
-        3) echo "You have chosen to DELETE an ADMITTED PATIENT"
+        3) echo "\n##### You have chosen to DELETE an ADMITTED PATIENT #####\n"
             ./delete_admitted_patient;;
-        4) echo "You have chosen to DELETE a BUILDING"
+        4) echo "\n##### You have chosen to DELETE a BUILDING #####\n"
             ./delete_buildings;;
-        5) echo "You have chosen to DELETE a ROOM"
+        5) echo "\n##### You have chosen to DELETE a ROOM #####\n"
             ./delete_room;;
-        6) echo "You have chosen to DELETE a PHARMACY"
+        6) echo "\n##### You have chosen to DELETE a PHARMACY #####\n"
             ./delete_pharmacy;;
-        7) echo "You have chosen to DELETE a PHARMACY PRESCRIPTION"
-            #YET TO DO THIS ONE
-            ./delete_pharmacy_prescription;;
-        *) echo "Invalid option";;
+        *) echo "\n##### Invalid option! #####\n";;
        esac;;
 
     4) echo "Which table related SEARCH would you like to perform?"
@@ -113,8 +104,6 @@ case $operation_choice in
 
             6) echo "You have chosen PHARMACY";;
 
-            7) echo "You have chosen PHARMACY PRESCRIPTION";;
-
             *) echo "Invalid option";;
         esac;;    
 
@@ -123,5 +112,6 @@ case $operation_choice in
     *) echo "Invalid option"
   
 esac
+  ./menu  
   echo -n "Enter your menu choice [1-99]: "
 done

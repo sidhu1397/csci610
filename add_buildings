@@ -9,7 +9,7 @@ year_regex="[^0-9]+"
 status_regex="[^a-zA-Z ]+"
 department_regex="[^a-zA-Z ]+"
 
-echo "Please add the following buildings details"
+echo "Please add the following buildings details...\n"
 echo "Enter building name"
 read building_name
 
@@ -77,4 +77,4 @@ else
   printf "\n%s%s%s%s%s\n" $RANDOM,"$building_name","$address",$no_of_rooms,"$manager",$department >> buildings.csv
 fi
 
-echo " Building's details added! "
+echo "\n##### Building's details added! #####\n"

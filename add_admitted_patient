@@ -4,14 +4,39 @@ number_regex="[^0-9]+"
 # location_regex="[A-Za-z0-9'\.\-\s\,]" //this is advanced regex for location
 location_regex="[^a-zA-Z ]+"
 
-echo "Please add the following patient details"
+echo "Please add the following patient details...\n"
+
 echo "Enter patient id"
 read patient_id
 
 if [[ "$patient_id" =~ $number_regex ]]
 then
-echo "please enter a valid id"
+echo "please enter a valid number as id"
 exit 1
+fi
+
+./patient_id_validation $patient_id
+if [[ $? == 0 ]] 
+then
+    ./menu
+    exit
+fi
+
+echo "Enter doctor id"
+read doctor_id
+
+if [[ "$doctor_id" =~ $number_regex ]]
+then
+echo "Please enter a valid number as id"
+exit 1
+fi
+
+./doc_id_validation $doctor_id
+
+if [[ $? == 0 ]] 
+then
+    ./menu
+    exit
 fi
 
 echo "Enter admitted date(YYYY-MM-DD)"
@@ -38,19 +63,22 @@ read surgery_date
 echo "Enter room id for the patient"
 read room_id
 
-echo "Enter doctor id"
-read doctor_id
-
-if [[ "$doctor_id" =~ $number_regex ]]
+./room_id_validation $room_id
+if [[ $? == 0 ]] 
 then
-echo "please enter a valid id"
-exit 1
+    ./menu
+    exit
 fi
 
-patient_name=`ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v patient_id="$patient_id" '{if ( $1 == patient_id ) {
+patient_name=`ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v d_id="$d_id" '{if ( $1 == d_id ) {
     patient_name = $2;
     print patient_name;
     }}' patients.csv `
+
+doctor_name=`ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v d_id="$d_id" '{if ( $1 == d_id ) {
+    name = $2;
+    print name;
+    }}' doctors.csv `
 
 
 #ADD RECORDS
@@ -63,3 +91,5 @@ elif [ -z "$(tail -c 1 <"$filename")" ]; then
 else
   printf "\n%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$doctor_id,$surgery_status,$surgery_date,$room_id >> $filename
 fi
+
+echo "\n##### Admitted Patient's details added! #####\n"
