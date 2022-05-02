@@ -3,7 +3,7 @@
 location_regex="[^a-zA-Z ]+"
 pharmacist_regex="[^a-zA-Z ]+"
 
-echo "Please add the following pharmacy details"
+echo "Please add the following pharmacy details...\n"
 echo "Enter location"
 read location
 
@@ -33,4 +33,4 @@ else
   printf "\n%s%s%s%s%s\n" $RANDOM,"$location","$pharmacist" >> pharmacy.csv
 fi
 
-echo " Pharmacy's details added! "
+echo "\n##### Pharmacy's details added! #####\n"

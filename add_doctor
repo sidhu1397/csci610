@@ -5,13 +5,14 @@ experience_regex="[^0-9]+"
 doc_office_regex="[^0-9]+"
 qualification_regex="[^a-zA-Z ]+"
 
-echo "Please add the following doctor details"
+echo "Please add the following doctor details...\n"
+
 echo "Enter doctor name"
 read doc_name
 
 if [[ "$doc_name" =~ $name_regex ]]
 then
-echo "Please enter a valid name"
+echo "Please enter a valid name!"
 exit 1
 fi
 
@@ -20,8 +21,9 @@ read doc_speciality
 
 if [[ "$doc_speciality" =~ $speciality_regex ]]
 then
-echo "Please enter a valid speciality"
-exit 1
+echo "Please enter a valid speciality!"
+./add_doctor
+exit
 fi
 
 echo "Enter doctor's office number"
@@ -29,8 +31,9 @@ read doc_office
 
 if [[ "$doc_office" =~ $doc_office_regex ]]
 then
-echo "Please enter a valid office number"
-exit 1
+echo "Please enter a valid office number!"
+./add_doctor
+exit
 fi
 
 echo "Enter doctor's qualification"
@@ -38,8 +41,9 @@ read doc_qualification
 
 if [[ "$doc_qualification" =~ $qualification_regex ]]
 then
-echo "Please enter a valid qualification(MBBS/MD)"
-exit 1
+echo "Please enter a valid qualification(MBBS/MD)!"
+./add_doctor
+exit
 fi
 
 #ADD RECORDS
@@ -53,4 +57,4 @@ else
   printf "\n%s%s%s%s%s\n" $RANDOM,"$doc_name","$doc_speciality",$doc_office,$doc_qualification >> doctors.csv
 fi
 
-echo " Doctor's details added! "
+echo "\n##### Doctor's details added! #####\n"

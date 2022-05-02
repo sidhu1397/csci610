@@ -1,7 +1,7 @@
 #Delete Doctor
 echo "Enter doctor's id"
 read doc_id
-echo " Do you want to proceed with deleting doctor's record for ID $id(y/n)"
+echo " Do you want to proceed with deleting doctor's record for ID $doc_id(y/n)"
 read c1
 if [ "$c1" = y ]
 then

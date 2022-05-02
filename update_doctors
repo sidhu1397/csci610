@@ -1,12 +1,3 @@
-q#!/bin/bash
-echo "Select your choice"
-echo "1.Update a Doctor's full record"
-echo "2.Delete Doctor's record"
-read choice
-
-if [[ "$choice" -eq 1 ]]
-then
-#Update code
 name_regex="[^a-zA-Z ]+"
 speciality_regex="[^a-zA-Z ]+"
 qualification_regex="[^a-zA-Z ]+"
@@ -73,10 +64,4 @@ awk -F, -v doc_id=$doc_id -v doc_name="$doc_name" 'BEGIN{OFS=FS} {
 	}1' patients.csv > patients.tmp && mv patients.tmp patients.csv	
 
 
-echo "Doctor records updated"
-
-
-else
-echo "Incorrect Entry"
-
-fi
+echo "\n##### Doctor's records with id $doc_id updated! #####\n"

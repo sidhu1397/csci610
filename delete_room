@@ -1,7 +1,7 @@
 #Delete Room
 echo "Enter room's id"
 read room_id
-echo " Do you want to proceed with deleting room's record for ID $id(y/n)"
+echo " Do you want to proceed with deleting room's record for ID $room_id(y/n)"
 read c1
 if [ "$c1" = y ]
 then
