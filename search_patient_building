@@ -26,5 +26,8 @@ if ($11 == rid_arr[id]) { printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%
 
 else
 echo "Invalid Entry. Try again"
+echo "----------------------------------------------------------------"
+echo "Redirecting to Main Menu"
+echo "------------------------------------------------------------------"
 exit 1
 fi

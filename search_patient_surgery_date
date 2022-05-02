@@ -22,6 +22,8 @@ echo "enter year to filter"
 read year
 echo "do you want to filter based on month(y/n)?"
 read ch1
+#validation
+
 if [[ $ch1 == "y" ]]
 then
 echo "enter month"
@@ -54,6 +56,10 @@ nawk -v start="$start" -v end="$end" -F, 'BEGIN{found=0;}{if (NR == 1) {print $1
 
 else
 echo "Invalid input. Start over again"
+echo "-------------------------------------------------------------------------------------"
+echo "Redirecting to Main Menu"
+echo "---------------------------------------------------------------------------------------"
+./menu
 exit 1
 fi
 
