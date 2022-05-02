@@ -1,5 +1,5 @@
 ap_id,name,admitted_date,location,doctor,diagnosis,patient_id,doctor_id,surgery_status,surgery_date,room_id
-1,Bill Scott,2020-03-02,St Cloud,Johnny Depp,Heart attack,1,1,completed,2020-03-17,12
+1,Bill Scott,2022-02-02,Kathmandu,Johnny Depp,COVIDDD,1,1,Incomplete,2022-02-22,1
 2,Mike Foley,2019-08-12,St Cloud,,COVID,2,2,completed,2019-08-29,8
 3,Rob Jones,2020-04-30,Minneapolis,,Ligament Fracture,3,3,completed,2020-05-10,6
 4,Paul Parker,2020-07-21,St Cloud,,COVID,4,4,completed,2020-07-25,8
@@ -9,3 +9,4 @@ ap_id,name,admitted_date,location,doctor,diagnosis,patient_id,doctor_id,surgery_
 8,Andy Sharma,2021-02-14,St Cloud,,Nose bleed,8,8,completed,2021-02-19,3
 9,Joseph King,2022-04-12,Sartell,,COVID,9,9,pending,2022-05-5,8
 10,Taylor Wong,2022-04-30,Waite Park,,COVID,10,10,pending,2022-05-10,8
+28448,Mona Smith,2020-05-21,StCloud,,COVID,1,1,Completed,2022-05-12,2

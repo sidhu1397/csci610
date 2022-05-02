@@ -12,3 +12,4 @@ r_id,type,number_of_rooms,occupied_rooms,free_rooms,building_id,dummy
 10,Suite,15,1,14,10,0
 12,Surgery,5,1,4,2,0
 13,General,10,7,3,2,0
+18918,DELUXEEE,222,22,2,1

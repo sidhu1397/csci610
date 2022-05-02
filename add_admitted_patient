@@ -14,7 +14,7 @@ echo "please enter a valid id"
 exit 1
 fi
 
-echo "Enter admitted date(mm-dd-yyyy)"
+echo "Enter admitted date(YYYY-MM-DD)"
 read admitted_date
 
 echo "Enter location"
@@ -29,6 +29,15 @@ fi
 echo "Enter diagnosis"
 read diagnosis
 
+echo "Enter surgery status"
+read surgery_status
+
+echo "Enter surgery date(YYYY-MM-DD)"
+read surgery_date
+
+echo "Enter room id for the patient"
+read room_id
+
 echo "Enter doctor id"
 read doctor_id
 
@@ -38,7 +47,6 @@ echo "please enter a valid id"
 exit 1
 fi
 
-# https://stackoverflow.com/questions/18648345/saving-awk-output-to-variable
 patient_name=`ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v patient_id="$patient_id" '{if ( $1 == patient_id ) {
     patient_name = $2;
     print patient_name;
@@ -49,16 +57,9 @@ patient_name=`ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v p
 filename=admitted_patients.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,$patient_name,$admitted_date,$location,$doctor_name,$diagnosis,$patient_id,$doctor_id >> $filename
+  printf "%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$doctor_id,$surgery_status,$surgery_date,$room_id >> $filename
 elif [ -z "$(tail -c 1 <"$filename")" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date",$location,"$doctor_name",$diagnosis,$patient_id,$doctor_id >> $filename
+  printf "%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$doctor_id,$surgery_status,$surgery_date,$room_id >> $filename
 else
-  printf "\n%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date",$location,"$doctor_name",$diagnosis,$patient_id,$doctor_id >> $filename
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$doctor_id,$surgery_status,$surgery_date,$room_id >> $filename
 fi
-
-
-# awk -F, -v patient_name="$patient_name" -v admitted_date="$admitted_date" -v location="$location" -v diagnosis="$diagnosis" -v patient_id="$patient_id" -v doctor_id="$doctor_id" 'BEGIN{OFS=FS} {
-#     if ($1 == doctor_id) {
-#     doctor_name = $2;
-#     print $1 = '$RANDOM', $2 = patient_name, $3=admitted_date, $4=location, $5 = doctor_name, $6=diagnosis, $7=patient_id, $8=doctor_id;
-# }}' doctors.csv >> admitted_patients.csv

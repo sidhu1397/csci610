@@ -1,0 +1,82 @@
+q#!/bin/bash
+echo "Select your choice"
+echo "1.Update a room's full record"
+echo "2.Delete room's record"
+read choice
+
+if [[ "$choice" -eq 1 ]]
+then
+#Update code
+room_regex="[^a-zA-Z0-9 ]+"
+number_regex="[^0-9 ]+"
+
+echo "Please add the following room details"
+
+echo "Enter room's id to edit"
+read room_id
+
+echo "Enter the building id"
+read building_id
+
+if [[ "$building_id" =~ $number_regex ]]
+then
+echo "Please enter a valid building id"
+exit 1
+fi
+
+echo "Enter new room type"
+read room_type
+
+if [[ "$room_type" =~ $room_regex ]]
+then
+echo "Please enter a valid room type"
+exit 1
+fi
+
+echo "Enter no of rooms available in the building"
+read number_of_rooms
+
+if [[ "$number_of_rooms" =~ $number_regex ]]
+then
+echo "Please enter a valid number"
+exit 1
+fi
+
+echo "Enter no of occupied rooms"
+read occupied_rooms
+
+if [[ "$occupied_rooms" =~ $number_regex ]]
+then
+echo "Please enter a valid number"
+exit 1
+fi
+
+echo "Enter no of free rooms"
+read free_rooms
+
+if [[ "$free_rooms" =~ $number_regex ]]
+then
+echo "Please enter a valid number"
+exit 1
+fi
+
+
+
+#UPDATE BUILDING
+
+awk -F, -v room_id="$room_id" -v room_type="$room_type" -v number_of_rooms="$number_of_rooms" -v occupied_rooms="$occupied_rooms" -v free_rooms="$free_rooms" -v building_id="$building_id" 'BEGIN {OFS=FS} {
+   if($1 == room_id) {
+    $2=room_type;
+    $3=number_of_rooms;
+    $4=occupied_rooms;
+    $5=free_rooms;
+    $6=building_id;
+    }
+    }1' rooms.csv > rooms.tmp && mv rooms.tmp rooms.csv
+
+echo "Room's record updated!"
+
+else
+echo "Incorrect Entry"
+
+fi

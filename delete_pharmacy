@@ -1,0 +1,12 @@
+#Delete Pharmacy
+echo "Enter pharmacy's id"
+read pharmacy_id
+echo " Do you want to proceed with deleting pharmacy's record for ID $pharmacy_id(y/n)"
+read c1
+if [ "$c1" = y ]
+then
+awk -v pharmacy_id=$pharmacy_id -F, '$1 != pharmacy_id' pharmacy.csv > pharmacy.tmp && mv pharmacy.tmp pharmacy.csv
+echo "Record deleted!"
+else
+echo "Record not deleted..."
+fi

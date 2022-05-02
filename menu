@@ -1,65 +1,126 @@
 # creating a menu with the following options
-echo "SELECT YOUR FAVORITE FRUIT";
-echo "1. Add a Doctor"
-echo "2. Add a patient record"
-echo "3. Update or delete patient record"
-echo "4. Update or delete doctor record"
-echo "5. Display doctor record"
-echo "6. Display patient record"
-echo "7. Add a Building"
-echo "8. Update or delete Building record"
-echo "9. Add admitted patient"
-echo "10. Update or delete admitted patient"
-echo "11. Add pharmacy"
-echo "12. Update or delete pharmacy"
+echo "What operation do you want to perform?";
+echo "1. ADD"
+echo "2. EDIT"
+echo "3. DELETE"
+echo "4. SEARCH"
 echo "99. exit"
 echo -n "Enter your menu choice [1-99]: "
 
-# Running a forever loop using while statement
 # This loop will run untill select the exit option.
 # User will be asked to select option again and again
 while :
 do
 
 # reading choice
-read choice
+read operation_choice
 
 # case statement is used to compare one value with the multiple cases.
-case $choice in
-  # Pattern 1
-  1)  echo "You have selected the option 1"
-      echo "Please enter the following details"
-	    ./add_doctor;;
-  # Pattern 2
-  2)  echo "You have selected the option 2"
-      echo "please enter the patient details details"
-	./add_patient;;
-  # Pattern 3
-  3)  echo "You have selected the option 3"
-      echo "please enter the following details";;    
-  # Pattern 4
-  4)  echo "you have selected option 4"
-      ./uord_doctors;;
-  5)  echo "you have selected option 5"
-      echo " Displaying doctor record"
-      ./display_doctors;;
-  6) echo "You have selected option 6"
-     ./display_patients;;
-  8) echo "You have selected option 8"
-      ./uord_buildings;;
-  9) echo "You have selected option 9"
-      ./add_admitted_patient;;
- 10) echo "You have selected option 10"
-      ./uord_admitted_patient;; 
- 11) echo "You have selected option 11"
-      ./add_pharmacy;;
- 12) echo "You have selected option 11"
-      ./uord_pharmacy;;
-# pattern exit
-  99) echo "Exiting Menu"   
-      exit;;
-  # Default Pattern
-  *) echo "invalid option";;
+case $operation_choice in
+  1)  echo "On which table do you want to ADD the data?"
+      echo "1. Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy 7. Pharmacy Presrciptions"  
+      echo -n "Please enter the corresponding number: "
+      read choice
+      
+      case $choice in
+        1) echo "You have chosen to ADD a DOCTOR."
+	        ./add_doctor;;
+        2) echo "You have chosen to ADD a PATIENT."    
+	        ./add_patients;;
+        3) echo "You have chosen to ADD an ADMITTED PATIENT"
+            ./add_admitted_patient;;
+        4) echo "You have chosen to ADD a BUILDING"
+            ./add_buildings;;
+        5) echo "You have chosen to ADD a ROOM"
+            ./add_room;;
+        6) echo "You have chosen to ADD a PHARMACY"
+            ./add_pharmacy;;
+        7) echo "You have chosen to ADD a PHARMACY PRESCRIPTION"
+            #YET TO DO THIS ONE
+            ./add_pharmacy_prescription;;
+        *) echo "Invalid option";;
+       esac;;
+
+  2)  echo "On which table do you want to EDIT the data?"
+      echo "1. Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy 7. Pharmacy Presrciptions"  
+      echo -n "Please enter the corresponding number: "
+      read choice
+  
+      case $choice in
+        1) echo "You have chosen to EDIT a DOCTOR."
+	        ./update_doctors;;
+        2) echo "You have chosen to EDIT a PATIENT."    
+	        ./update_patients;;
+        3) echo "You have chosen to EDIT an ADMITTED PATIENT"
+            ./update_admitted_patient;;
+        4) echo "You have chosen to EDIT a BUILDING"
+            ./update_buildings;;
+        5) echo "You have chosen to EDIT a ROOM"
+            ./update_room;;
+        6) echo "You have chosen to EDIT a PHARMACY"
+            ./update_pharmacy;;
+        7) echo "You have chosen to EDIT a PHARMACY PRESCRIPTION"
+            #YET TO DO THIS ONE
+            ./update_pharmacy_prescription;;
+        *) echo "Invalid option";;
+       esac;;  
+      
+   3) echo "On which table do you want to DELETE the data?"
+      echo "1. Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy 7. Pharmacy Presrciptions"  
+      echo -n "Please enter the corresponding number: "
+      read choice
+  
+      case $choice in
+        1) echo "You have chosen to DELETE a DOCTOR."
+	        ./delete_doctors;;
+        2) echo "You have chosen to DELETE a PATIENT."    
+	        ./delete_patients;;
+        3) echo "You have chosen to DELETE an ADMITTED PATIENT"
+            ./delete_admitted_patient;;
+        4) echo "You have chosen to DELETE a BUILDING"
+            ./delete_buildings;;
+        5) echo "You have chosen to DELETE a ROOM"
+            ./delete_room;;
+        6) echo "You have chosen to DELETE a PHARMACY"
+            ./delete_pharmacy;;
+        7) echo "You have chosen to DELETE a PHARMACY PRESCRIPTION"
+            #YET TO DO THIS ONE
+            ./delete_pharmacy_prescription;;
+        *) echo "Invalid option";;
+       esac;;
+
+    4) echo "Which table related SEARCH would you like to perform?"
+       echo "1.Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy 7. Pharmacy Presrciptions"  
+       echo -n "Please enter the corresponding number: "
+       read choice
+
+        case $choice in
+            1) echo "You have chosen DOCTOR."
+                ./display_doctors;;
+            2) echo "You have chosen PATIENT."    
+                ./display_patients;;
+            3) echo "You have chosen ADMITTED PATIENT"
+               echo "1. Search patient by admission date" 
+               echo "2. Search patient by surgery date" 
+               read choice
+                    case $choice in
+                        1) ./search_patient_admission_date;;
+                        2) ./search_patient_surgery_date;; 
+                    esac;;
+            4) echo "You have chosen BUILDING";;
+
+            5) echo "You have chosen ROOM";;
+
+            6) echo "You have chosen PHARMACY";;
+
+            7) echo "You have chosen PHARMACY PRESCRIPTION";;
+
+            *) echo "Invalid option";;
+        esac;;    
+
+    99) echo "Exiting Menu"
+        exit;;
+    *) echo "Invalid option"
   
 esac
   echo -n "Enter your menu choice [1-99]: "

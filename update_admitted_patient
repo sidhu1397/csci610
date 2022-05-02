@@ -1,0 +1,65 @@
+q#!/bin/bash
+echo "Select your choice"
+echo "1.Update a patient's full record"
+echo "2.Delete patient's record"
+read choice
+
+if [[ "$choice" -eq 1 ]]
+then
+#Update code
+name_regex="[^a-zA-Z0-9 ]+"
+number_regex="[^0-9 ]+"
+# no need to patient id, patient name and doctor id and doctor name since those are taken directly from patient and doctor table.
+# so, no need to fetch that data from the user as admitted_patient_id contains all the information regarding patient and doctor 
+echo "Please add the following patient details"
+
+echo "Enter admitted patient's id"
+read admitted_patient_id
+
+echo "Enter admitted date"
+read admitted_date
+
+echo "Enter patient's location"
+read location
+
+if [[ "$location" =~ $name_regex ]]
+then
+echo "please enter a valid location"
+exit 1
+fi
+
+echo "Enter diagnosis"
+read diagnosis
+
+echo "Enter surgery status"
+read surgery_status
+
+echo "Enter surgery date (YYYY-MM-DD)"
+read surgery_date
+
+echo "Enter room id for the patient"
+read room_id
+
+#UPDATE ADMITTED PATIENT
+awk -F, -v admitted_patient_id="$admitted_patient_id" -v admitted_date="$admitted_date" -v location="$location" -v diagnosis=$diagnosis -v surgery_status="$surgery_status" -v surgery_date="$surgery_date" -v room_id="$room_id" 'BEGIN {OFS=FS} {
+   if($1 == admitted_patient_id) {
+    $2=$2;
+    $3=admitted_date;
+    $4=location;
+    $5=$5;
+    $6=diagnosis;
+    $7=$7;
+    $8=$8;
+    $9=surgery_status;
+    $10=surgery_date;
+    $11=room_id;
+    }
+    }1' admitted_patients.csv > admitted_patients.tmp && mv admitted_patients.tmp admitted_patients.csv
+
+echo "Admitted patients's record updated!"
+
+
+else
+echo "Incorrect Entry"
+#--------------------------------------------
+fi
