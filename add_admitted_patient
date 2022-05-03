@@ -43,7 +43,7 @@ fi
 echo "Enter admitted date(YYYY-MM-DD)"
 read admitted_date
 
-if[[ ! "$admitted_date" =~ $date_regex ]]
+if [[ ! "$admitted_date" =~ $date_regex ]]
 then
 echo "Please enter a valid date in YYYY-MM-DD format"
 exit 1

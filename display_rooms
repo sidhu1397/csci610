@@ -2,7 +2,6 @@ echo "Select a choice"
 echo "1. search available rooms"
 echo "2. Display building information"
 echo "3. Display rooms by room category"
-echo "4. Return building admin details"
 read ch
 
 #-----------------search free rooms--------------------------------------------

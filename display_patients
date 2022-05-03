@@ -5,8 +5,7 @@ echo "3. Search patients by doctor"
 echo "4. Search patients by admission date"
 echo "5. Search patients by surgery date"
 echo "6. Search patients by buildings"
-echo "7. Search patients by diagonsis"
-echo "8. Display all patients with admission details"
+echo "7. Display all patients with admission details"
 read choice
 if [[ $choice -eq 1 ]]
 then
@@ -40,10 +39,9 @@ nawk -v name="$name" -F, 'BEGIN{NR==1}{ if ($2 == name) {printf "%-15s%-15s%-15s
 
 fi
 
-#-----------------search patient by location-------------------
 if [[ $choice -eq 2 ]]
 then
-echo "Select a location"
+echo "Select a location (Please enter the corresponding number)"
 echo "1. St Cloud"
 echo "2. Minneapolis"
 echo "3. St Paul"
@@ -124,7 +122,7 @@ then
 ./search_patient_building
 fi
 #--------------------return all patient records------------------------
-if [[ $choice -eq 8 ]]
+if [[ $choice -eq 7 ]]
 then
 nawk -F, '{ printf "%-17s%-17s%-17s%-17s%-17s%-17s%-17s%-17s%-17s%-17s%-17s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11;}' admitted_patients.csv
 fi

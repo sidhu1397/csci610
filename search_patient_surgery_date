@@ -74,6 +74,6 @@ read year
 start="$year-01-01"
 end="$year-12-31"
 echo " "
-nawk -v start="$start" -v end="$end" -F, 'BEGIN{found=0;printf "%-20s%-20s%-20s\n","Surgeries performed","Surgeries Pending","Total Surgeries";pending=0;performed=0}{if($9 == "pending"){pending++;found=1} if($9 == "completed") {performed++; found=1}}END{ if(found == 0){print "No surgeries found for entered year"} else {printf "%-20s%-20s%-20d\n",pending,performed,pending+performed}}' admitted_patients.csv
+nawk -v start="$start" -v end="$end" -F, 'BEGIN{found=0;printf "%-20s%-20s%-20s\n","Surgeries Pending","Surgeries Performed","Total Surgeries";pending=0;performed=0}{if($9 == "pending" && $10 >= start && $10 <= end){pending++;found=1} if($9 == "completed" && $10 >= start && $10 <= end) {performed++; found=1}}END{ if(found == 0){print "No surgeries found for entered year"} else {printf "%-20s%-20s%-20d\n",pending,performed,pending+performed}}' admitted_patients.csv
 
 fi

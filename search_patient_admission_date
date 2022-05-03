@@ -73,7 +73,8 @@ read ch1
 
 if [[ $ch1 == 1 ]]
 then
-awk -F, '{ print $3, $1,$2,$4,$5,$6,$7,$8,$9,$10,$11 }' admitted_patients.csv | sort
+echo "admitted_date ap_id name location doctor diagnosis patient_id doctor_id surgery_status surgery_date room_id"
+awk -F, '(NR != 1){ print $3, $1,$2,$4,$5,$6,$7,$8,$9,$10,$11 }' admitted_patients.csv | sort
 elif [[ $ch1 == 2 ]]
 then
 awk -F, '{ print $3, $1,$2,$4,$5,$6,$7,$8,$9,$10,$11 }' admitted_patients.csv | sort  -r

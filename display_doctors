@@ -1,7 +1,7 @@
 echo "Select a choice"
 echo "1.Search doctor by id"
 echo "2.Search doctor by speciality"
-echo "3.Search doctor's patients"
+echo "3.Search doctors by patient id"
 echo "4.Display all doctors"
 echo -n "Enter your choice: "
 read choice

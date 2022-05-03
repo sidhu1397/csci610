@@ -104,6 +104,6 @@ IFS=$'\n'
 nfound=0
 namearray=($(nawk -F, '{print $2}' buildings.csv))
 #echo "${namearray[@]}"
-nawk -F, '{print $1;printf "%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4}' pharmacy.csv
+nawk -F, '{printf "%-15s%-15s%-15s%-s\n",$1,$2,$3,$4}' pharmacy.csv
 echo "-------------------------------------------------------------------------------------"
 fi
