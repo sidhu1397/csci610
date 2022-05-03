@@ -1,12 +1,12 @@
 echo "Select a choice"
-echo "1. search a patient by name"
-echo "2. search patients by locations"
-echo "3. search patients by doctor"
-echo "4. search patients by admission date"
-echo "5. search patients by surgery date"
+echo "1. Search a patient by name"
+echo "2. Search patients by locations"
+echo "3. Search patients by doctor"
+echo "4. Search patients by admission date"
+echo "5. Search patients by surgery date"
 echo "6. Search patients by buildings"
 echo "7. Search patients by diagonsis"
-echo "8. display all patients with admission details"
+echo "8. Display all patients with admission details"
 read choice
 if [[ $choice -eq 1 ]]
 then
@@ -126,5 +126,5 @@ fi
 #--------------------return all patient records------------------------
 if [[ $choice -eq 8 ]]
 then
-nawk -F, '{ printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11;}' admitted_patients.csv
+nawk -F, '{ printf "%-17s%-17s%-17s%-17s%-17s%-17s%-17s%-17s%-17s%-17s%-17s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11;}' admitted_patients.csv
 fi

@@ -64,7 +64,7 @@ awk -F, -v patient_id="$patient_id" -v p_name="$p_name" -v department="$departme
     }1' patients.csv > patients.tmp && mv patients.tmp patients.csv
 
 #UPDATE PATIENTS'S NAME and LOCATION IN ADMITTED_PATIENT TABLE AS WELL
-awk -F, -v patient_id=$patient_id -v p_name="$p_name" -v 'BEGIN{OFS=FS} {
+awk -F, -v patient_id=$patient_id -v p_name="$p_name" 'BEGIN{OFS=FS} {
  if($7 == patient_id) {
  $2=p_name;
  }
