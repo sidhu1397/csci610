@@ -6,6 +6,6 @@ ap_id,name,admitted_date,location,doctor,diagnosis,patient_id,doctor_id,surgery_
 6,Rachel Cooper,2021-11-23,Duluth,Eva Smith,COVID,6,6,completed,2021-11-30,8
 7,Buddy Green,2021-03-12,St Paul,Kevin Bacon,Glaucoma,7,7,completed,2021-03-15,3
 8,Andy Sharma,2021-02-14,St Cloud,Sofia Swanson,Nose bleed,8,8,completed,2021-02-19,3
-9,Joseph King,2022-04-12,Sartell,Kamala Nepal,COVID,9,9,pending,2022-05-5,8
+9,Joseph King,2000-01-01,Sartell,Bikal,COVID,9,1,Completed,2020-01-11,3
 10,Taylor Wong,2022-04-30,Waite Park,Bell Griffin,COVID,10,10,pending,2022-05-10,8
 10132,Monika Geller,2022-02-02,Sartell,Johnny Depp,Covid,9,3,none,2022-01-02,4
