@@ -2,6 +2,7 @@ echo "Select a choice"
 echo "1. Display patients pending for surgery"
 echo "2. Display patients underwent surgery"
 echo "3. Filter patients by surgery date"
+echo "4. Display number total nuumber of surgeries performed and pending for a year"
 read ch
 
 if [[ $ch -eq 1 ]]
@@ -63,5 +64,16 @@ echo "--------------------------------------------------------------------------
 exit 1
 fi
 
+
+fi
+
+if [[ $ch -eq 4 ]]
+then
+echo "Enter year to filter"
+read year
+start="$year-01-01"
+end="$year-12-31"
+echo " "
+nawk -v start="$start" -v end="$end" -F, 'BEGIN{found=0;printf "%-20s%-20s%-20s\n","Surgeries performed","Surgeries Pending","Total Surgeries";pending=0;performed=0}{if($9 == "pending"){pending++;found=1} if($9 == "completed") {performed++; found=1}}END{ if(found == 0){print "No surgeries found for entered year"} else {printf "%-20s%-20s%-20d\n",pending,performed,pending+performed}}' admitted_patients.csv
 
 fi
