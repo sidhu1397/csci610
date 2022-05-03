@@ -1,0 +1,61 @@
+." Process this file with simply
+." ./hospital-management
+."
+.TH hospital-management
+
+.Sh NAME
+.B hospital-management
+- Hospital Management System to manage Doctors, Patients, Rooms, Buildings, Pharmacy.
+
+.SH SYNOPSIS
+.B hospital-management
+
+.SH DESCRIPTION
+.B hospital-management
+This tool can be used to manage doctors, patients, rooms, buildings and pharmacies for a Hotel Management System. 
+CSV files are first required namely- doctors.csv, patients.csv, pharmacy.csv, rooms.csv, admitted_patients.csv, buildings.csv.
+This tool will help to perform different operations on the csv records.
+More information on the tasks that can be performed is explained below:
+
+.RS
+.nf
+- Performs search for admitted patients based on admission date.
+- Performs search for patient's building.
+- Performs search for patient's surgery date.
+- Performs search on table fields.
+- Performs validation for input fields.
+- Performs validation if one table's data is dependent on another. For example: Updating doctor's name in patient will update the doctor's name in admitted patients table as well.
+- Performs addition, editing, deleting for doctors, patients, rooms, buildings and pharmacy.
+- Performs search on table fields. Example:
+    - Search doctor by id.
+    - Search doctor by specialty.
+    - Search doctor's patients.
+    - Display all doctors.
+    - Search available rooms.
+    - Return building admin details.
+    - Others- Several other searches are possible which will be shown in the menu.
+.RE
+
+
+.SH OPERATIONS
+.TP
+.B 1. ADD - This operation will enable the user to add a record in specific tables. 
+
+.TP
+.B 2. EDIT - This operation will enable the user to edit data for existing record in a particular table based on id.
+
+.TP
+.B 3. DELETE- This operation will enable the user to delete a particular record from a specific table.
+
+.TP
+.B 4. SEARCH- This operation will enable the user to perform different kinds of searches.
+
+
+.SH COPYRIGHT
+.PP
+Copyright 2022 St. Cloud State University. All rights reserved
+
+.SH CREDITS
+.PP
+This utility was created by BIKAL NEPAL and SIDHARTH SRIDHAR for CSCI 610 Final Project at St. Cloud State University.
+
