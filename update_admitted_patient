@@ -29,15 +29,25 @@ fi
 echo "Enter diagnosis"
 read diagnosis
 
+echo "Enter doctor id"
+read doc_id
+
+./doc_id_validation $doc_id
+if [[ $? == 0 ]] 
+then
+    ./menu
+    exit
+fi
+
 echo "Enter surgery status"
 read surgery_status
 
 echo "Enter surgery date (YYYY-MM-DD)"
 read surgery_date
 
-if [[ "$surgery_date" =~ $date_regex ]]
+if [[ ! "$surgery_date" =~ $date_regex ]]
 then
-echo "Please enter a valid date"
+echo "Please enter a valid date in YYYY-MM-DD format"
 exit 1
 fi
 
@@ -51,16 +61,21 @@ then
     exit
 fi
 
+doctor_name=`ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v doc_id="$doc_id" '{if ( $1 == doc_id ) {
+    name = $2;
+    print name;
+    }}' doctors.csv `
+
 #UPDATE ADMITTED PATIENT
-awk -F, -v admitted_patient_id="$admitted_patient_id" -v admitted_date="$admitted_date" -v location="$location" -v diagnosis=$diagnosis -v surgery_status="$surgery_status" -v surgery_date="$surgery_date" -v room_id="$room_id" 'BEGIN {OFS=FS} {
+awk -F, -v admitted_patient_id="$admitted_patient_id" -v admitted_date="$admitted_date" -v location="$location" -v diagnosis=$diagnosis -v surgery_status="$surgery_status" -v surgery_date="$surgery_date" -v room_id="$room_id" -v doc_id="$doc_id" -v doctor_name="$doctor_name" 'BEGIN {OFS=FS} {
    if($1 == admitted_patient_id) {
     $2=$2;
     $3=admitted_date;
     $4=location;
-    $5=$5;
+    $5=doctor_name;
     $6=diagnosis;
     $7=$7;
-    $8=$8;
+    $8=doc_id;
     $9=surgery_status;
     $10=surgery_date;
     $11=room_id;

@@ -58,10 +58,10 @@ awk -F, -v doc_id=$doc_id -v doc_name="$doc_name" -v doc_speciality="$doc_specia
 
 #UPDATE DOCTOR'S NAME IN PATIENT TABLE AS WELL
 awk -F, -v doc_id=$doc_id -v doc_name="$doc_name" 'BEGIN{OFS=FS} {
-	if($5 == doc_id) {
-	$4=doc_name;
+	if($8 == doc_id) {
+	$5=doc_name;
 	}
-	}1' patients.csv > patients.tmp && mv patients.tmp patients.csv	
+	}1' admitted_patients.csv > admitted_patients.tmp && mv admitted_patients.tmp admitted_patients.csv	
 
 
 echo -e "\n##### Doctor's records with id $doc_id updated! #####\n"

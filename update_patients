@@ -24,12 +24,6 @@ echo "Please enter a valid name"
 exit 1
 fi
 
-if [[ "$p_name" =~ $name_regex ]]
-then
-echo "Please enter a valid name"
-exit 1
-fi
-
 echo "Enter department where patient is admitted"
 read department
 
@@ -42,7 +36,7 @@ fi
 echo "Enter contact number for the patient(xxx-xxx-xxxx)"
 read contact
 
-if [[ "$contact" =~ $phone_regex ]]
+if [[ ! "$contact" =~ $phone_regex ]]
 then 
 echo "Please enter a valid contact number in xxx-xxx-xxxx format"
 exit 1
@@ -51,22 +45,29 @@ fi
 echo "Enter email for the patient"
 read email
 
-if [[ "$email" =~ $email_regex ]]
+if [[ ! "$email" =~ $email_regex ]]
 then 
 echo "Please enter a valid email od in xxxx@xxxx.xxx format"
 exit 1
 fi
 
 
-#UPDATE BUILDING
+#UPDATE PATIENT
 
 awk -F, -v patient_id="$patient_id" -v p_name="$p_name" -v department="$department" -v contact="$contact" -v email="$email" 'BEGIN {OFS=FS} {
    if($1 == patient_id) {
-    $2=patient_name;
+    $2=p_name;
     $3=department;
     $4=contact;
     $5=email;
     }
     }1' patients.csv > patients.tmp && mv patients.tmp patients.csv
+
+#UPDATE PATIENTS'S NAME and LOCATION IN ADMITTED_PATIENT TABLE AS WELL
+awk -F, -v patient_id=$patient_id -v p_name="$p_name" -v 'BEGIN{OFS=FS} {
+ if($7 == patient_id) {
+ $2=p_name;
+ }
+ }1' admitted_patients.csv > admitted_patients.tmp && mv admitted_patients.tmp admitted_patients.csv    
 
 echo -e "\n##### Patient's records with id $patient_id updated! #####\n"
