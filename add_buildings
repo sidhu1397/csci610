@@ -9,7 +9,7 @@ year_regex="[^0-9]+"
 status_regex="[^a-zA-Z ]+"
 department_regex="[^a-zA-Z ]+"
 
-echo "Please add the following buildings details...\n"
+echo -e "Please add the following buildings details...\n"
 echo "Enter building name"
 read building_name
 

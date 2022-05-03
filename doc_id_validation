@@ -19,7 +19,7 @@ done
 if [[ $nfound -eq 0 ]]
 then
  echo "Doc not found"
- echo "Patient name is not in the database.Please enter a valid patient name"
+ echo "Patient name is not in the database. Please enter a valid patient name"
  return 0
 fi
 }

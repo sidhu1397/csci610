@@ -5,7 +5,7 @@ experience_regex="[^0-9]+"
 doc_office_regex="[^0-9]+"
 qualification_regex="[^a-zA-Z ]+"
 
-echo "Please add the following doctor details...\n"
+echo -e "Please add the following doctor details...\n"
 
 echo "Enter doctor name"
 read doc_name

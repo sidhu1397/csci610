@@ -6,7 +6,7 @@ read c1
 if [ "$c1" = y ]
 then
 awk -v room_id=$room_id -F, '$1 != room_id' rooms.csv > rooms.tmp && mv rooms.tmp rooms.csv
-echo ">>>>>Record deleted!<<<<<\n"
+echo -e ">>>>>Record deleted!<<<<<\n"
 else
-echo "Record not deleted...\n"
+echo -e "Record not deleted...\n"
 fi

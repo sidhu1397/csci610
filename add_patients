@@ -4,7 +4,7 @@ department_regex="[^a-zA-Z ]+"
 phone_regex="^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
 email_regex="^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
 
-echo "Please add the following patient details...\n"
+echo -e "Please add the following patient details...\n"
 
 echo "Enter patient name"
 read p_name

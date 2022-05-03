@@ -11,7 +11,7 @@ read building_name
 
 if [[ "$building_name" =~ $building_regex ]]
 then
-echo "please enter a valid name"
+echo "Please enter a valid name"
 exit 1
 fi
 
@@ -20,7 +20,7 @@ read building_address
 
 if [[ "$building_address" =~ $building_regex ]]
 then
-echo "please enter a valid address"
+echo "Please enter a valid address"
 exit 1
 fi
 
@@ -29,7 +29,7 @@ read num_of_rooms
 
 if [[ "$num_of_rooms" =~ $number_regex ]]
 then
-echo "please enter a valid number"
+echo "Please enter a valid number"
 exit 1
 fi
 
@@ -38,7 +38,7 @@ read building_manager_name
 
 if [[ "$building_manager_name" =~ $building_regex ]]
 then
-echo "please enter a valid name"
+echo "Please enter a valid name"
 exit 1
 fi
 
@@ -47,7 +47,7 @@ read building_constructed_year
 
 if [[ "$building_constructed_year" =~ $number_regex ]]
 then
-echo "please enter a valid year"
+echo "Please enter a valid year"
 exit 1
 fi
 
@@ -56,7 +56,7 @@ read building_department
 
 if [[ "$building_department" =~ $building_regex ]]
 then
-echo "please enter a valid department"
+echo "Please enter a valid department"
 exit 1
 fi
 

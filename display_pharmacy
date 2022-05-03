@@ -9,7 +9,7 @@ read ch
 if [[ $ch -eq 1 ]]
 then
 
-echo "Enter a pharmacy id(between 1-10)"
+echo "Enter a pharmacy id"
 read p_id
 
 IFS=$'\n'
@@ -27,7 +27,7 @@ done
 
 if [[ $nfound -eq 0 ]]
 then
- echo "Pharmacy with the provided ID is not in the database.Please enter a valid Pharmacy ID(between 1-10)"
+ echo "Pharmacy with the provided ID is not in the database.Please enter a valid Pharmacy ID"
  echo "------------------------------------------------------------------------------"
  echo "Redirecting to Main Menu"
  echo "------------------------------------------------------------------------------"
@@ -55,7 +55,7 @@ fi
 if [[ $ch -eq 2 ]]
 then
 
-echo "Enter a pharmacy id(between 1-10)"
+echo "Enter a pharmacy id"
 read p_id
 
 IFS=$'\n'
@@ -73,7 +73,7 @@ done
 
 if [[ $nfound -eq 0 ]]
 then
- echo "Pharmacy with the provided ID is not in the database.Please enter a valid Pharmacy ID(between 1-10)"
+ echo "Pharmacy with the provided ID is not in the database.Please enter a valid Pharmacy ID"
  echo "------------------------------------------------------------------------------"
  echo "Redirecting to Main Menu"
  echo "------------------------------------------------------------------------------"

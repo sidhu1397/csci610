@@ -6,7 +6,7 @@ read c1
 if [ "$c1" = y ]
 then
 awk -v doc_id=$doc_id -F, '$1 != doc_id' doctors.csv > doctors.tmp && mv doctors.tmp doctors.csv
-echo ">>>>>Record deleted!<<<<<\n"
+echo -e ">>>>>Record deleted!<<<<<\n"
 else
-echo "Record not deleted...\n"
+echo -e "Record not deleted...\n"
 fi

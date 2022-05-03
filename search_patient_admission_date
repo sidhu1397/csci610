@@ -18,7 +18,7 @@ then
 nawk -v adate="$adate" -F, 'BEGIN{found=0}{ if(NR == 1) { printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11;} if(adate == $3) { printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11;found++;}}END{if (found == 0){print "No admission record is present for this particular date"}}' admitted_patients.csv
 
 else
-echo "admission date is not in proper format(YYYY-MM-DD)"
+echo "Admission date is not in proper format(YYYY-MM-DD)"
 echo "Redirecting to main menu"
 ./menu
 exit
@@ -37,7 +37,7 @@ then
 nawk -v adate="$adate" -F, 'BEGIN{found=0}{ if(NR == 1) { printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11;} if($3 < adate) { printf "%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11;found++;}}END{if (found == 0){print "No admission record is present for this particular date"}}' admitted_patients.csv
 
 else
-echo "admission date is not in proper format(YYYY-MM-DD)"
+echo "Admission date is not in proper format(YYYY-MM-DD)"
 echo "Redirecting to main menu"
 ./menu
 exit
@@ -57,7 +57,7 @@ nawk -v adate="$adate" -F, 'BEGIN{found=0}{ if(NR == 1) { printf "%-15s%-15s%-15
 
 
 else
-echo "admission date is not in proper format(YYYY-MM-DD)"
+echo "Admission date is not in proper format(YYYY-MM-DD)"
 ./menu
 exit
 fi

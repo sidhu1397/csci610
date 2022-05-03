@@ -4,7 +4,7 @@ number_regex="[^0-9]+"
 # location_regex="[A-Za-z0-9'\.\-\s\,]" //this is advanced regex for location
 location_regex="[^a-zA-Z ]+"
 
-echo "Please add the following patient details...\n"
+echo -e "Please add the following patient details...\n"
 
 echo "Enter patient id"
 read patient_id

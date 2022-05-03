@@ -4,7 +4,7 @@ location_regex="[^a-zA-Z ]+"
 pharmacist_regex="[^a-zA-Z ]+"
 number_regex="[^0-9 ]+"
 
-echo "Please add the following pharmacy details...\n"
+echo -e "Please add the following pharmacy details...\n"
 
 echo "Enter location"
 read location
@@ -37,11 +37,11 @@ fi
 filename=pharmacy.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,"$location","$pharmacist","$building_id" >> pharmacy.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$location","$pharmacist","$building_id" >> pharmacy.csv;
 elif [ -z "$(tail -c 1 <"$filename")" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,"$location","$pharmacist","$building_id" >> pharmacy.csv
+  printf "%s%s%s%s%s\n" $RANDOM,"$location","$pharmacist","$building_id" >> pharmacy.csv;
 else
-  printf "\n%s%s%s%s%s\n" $RANDOM,"$location","$pharmacist","$building_id" >> pharmacy.csv
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$location","$pharmacist","$building_id" >> pharmacy.csv;
 fi
 
 echo -e "\n##### Pharmacy's details added! #####\n"
