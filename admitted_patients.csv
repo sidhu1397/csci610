@@ -1,11 +1,10 @@
 ap_id,name,admitted_date,location,doctor,diagnosis,patient_id,doctor_id,surgery_status,surgery_date,room_id
-2,Mike Foley,2019-08-12,St Cloud,Will Smith,COVID,2,4,completed,2019-08-29,8
-3,Rob Jones,2020-04-30,Minneapolis,Johnny Depp,Ligament Fracture,3,3,completed,2020-05-10,6
-4,Paul Parker,2020-07-21,St Cloud,Harrison Ford,COVID,4,2,completed,2020-07-25,8
-5,Chandler Bing,2021-09-14,St Cloud,Bishnu Nepal(UNAVAILABLE),Paralysis,5,5,completed,2021-09-19,9
-6,Rachel Cooper,2021-11-23,Duluth,Eva Smith,COVID,6,6,completed,2021-11-30,8
-7,Buddy Green,2021-03-12,St Paul,Kevin Bacon,Glaucoma,7,7,completed,2021-03-15,3
-8,Andy Sharma,2021-02-14,St Cloud,Sofia Swanson,Nose bleed,8,8,completed,2021-02-19,3
-9,Joseph King,2000-01-01,Sartell,Bikal,COVID,9,1,Completed,2020-01-11,3
-10,Taylor Wong,2022-04-30,Waite Park,Bell Griffin,COVID,10,10,pending,2022-05-10,8
-10132,Monika Geller,2022-02-02,Sartell,Johnny Depp,Covid,9,3,none,2022-01-02,4
+2,Pearl Buck,2019-08-12,St Cloud,Will Smith,COVID,4,4,completed,2019-08-29,8
+3,Elijan Hank,2020-04-30,Minneapolis,Johnny Depp,Ligament Fracture,2,3,completed,2020-05-10,6
+4,Mona Smith,2020-07-21,St Cloud,Harrison Ford,COVID,1,2,completed,2020-07-25,8
+5,Bill Scott,2021-09-14,St Cloud,Bishnu Nepal(UNAVAILABLE),Paralysis,3,5,completed,2021-09-19,9
+6,Chandler Bing,2021-11-23,Duluth,Eva Smith,COVID,5,6,completed,2021-11-30,8
+7,Sam Tucker,2021-03-12,St Paul,Kevin Bacon,Glaucoma,6,7,completed,2021-03-15,3
+8,Alex Parker,2021-02-14,St Cloud,Sofia Swanson,Nose bleed,7,8,completed,2021-02-19,3
+9,Buddy Green,2000-01-01,Sartell,Bikal,COVID,8,1,Completed,2020-01-11,3
+10,Monika Geller,2022-04-30,Waite Park,Bell Griffin,COVID,9,10,pending,2022-05-10,8
