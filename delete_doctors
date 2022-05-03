@@ -7,10 +7,10 @@ if [ "$c1" = y ]
 then
 awk -v doc_id=$doc_id -F, '$1 != doc_id' doctors.csv > doctors.tmp && mv doctors.tmp doctors.csv
 
-#MAKING DOCTOR FIELD AS "UNAVAILABLE" FOR ADMITTED_PATIENTS
+#MAKING DOCTOR FIELD AS "N/A" FOR ADMITTED_PATIENTS
 awk -v doc_id=$doc_id -F, 'BEGIN{OFS=FS} {
    if($8 == doc_id) {
-   $5=$5 "(UNAVAILABLE)";
+   $5=$5 "(N/A)";
    }
    }1' admitted_patients.csv > admitted_patients.tmp && mv admitted_patients.tmp admitted_patients.csv
 

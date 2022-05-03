@@ -1,7 +1,7 @@
 #Regex Check
 name_regex="[^a-zA-Z ]+"
 # address_regex="[A-Za-z0-9'\.\-\s\,]"
-address_regex="[^a-zA-Z ]+"
+address_regex="[^a-zA-Z0-9 ]+"
 no_of_rooms_regex="[^0-9]+"
 doc_office_regex="[^0-9]+"
 manager_regex="[^a-zA-Z ]+"
@@ -67,7 +67,7 @@ fi
 
 
 
-#ADD RECORDS
+#ADD BUILDING RECORDS
 filename=buildings.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then

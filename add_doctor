@@ -46,7 +46,7 @@ echo "Please enter a valid qualification(MBBS/MD)!"
 exit
 fi
 
-#ADD RECORDS
+#ADD DOCTOR RECORDS
 filename=doctors.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then

@@ -62,7 +62,7 @@ echo "\n>>>>>Number of free rooms incorrect!<<<<<"
 exit 1
 fi
 
-#ADD RECORDS
+#ADD ROOM RECORDS
 filename=rooms.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then
