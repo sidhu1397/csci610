@@ -1,5 +1,5 @@
 building_id,building_name,address,number_of_rooms,building_manager,constructed_year,department,dummy
-1,ECC,Kathmadu,9,Petzold,1999,CSCI,0
+1,Atwood,4th Avenue,22,Graham,1990,Surgery,0
 2,H2,4th Avenue,13,Helen,2001,Cardiology,0
 3,H3,5th Avenue,20,Kevin,2001,ENT,0
 4,H4,6th Avenue,3,Jack,2001,Ortho,0

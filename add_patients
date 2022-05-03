@@ -36,7 +36,7 @@ read email
 if [[ "$email" =~ $email_regex ]]
 then 
 
-#ADD RECORDS
+#ADD PATIENT'S RECORDS
 filename=patients.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then

@@ -2,6 +2,7 @@ echo "Select a choice"
 echo "1. Search by a particular date"
 echo "2. Search before a paritcular date"
 echo "3. Search after a paritcular date"
+echo "4. Sort admission records"
 #date_regex="(01|02|03|04|05|06|07|08|09|10|11|12)/(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)/[0-9]{4}"
 date_regex="^[0-9]{4}-(01|02|03|04|05|06|07|08|09|10|11|12)-(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)$"
 read ch
@@ -60,6 +61,29 @@ else
 echo "Admission date is not in proper format(YYYY-MM-DD)"
 ./menu
 exit
+fi
+fi
+
+if [[ $ch == 4 ]]
+then
+echo "Select a Choice"
+echo "1.Sort by ascending order of admission dates"
+echo "2.Sort by Descending order of admission dates"
+read ch1
+
+if [[ $ch1 == 1 ]]
+then
+awk -F, '{ print $3, $1,$2,$4,$5,$6,$7,$8,$9,$10,$11 }' admitted_patients.csv | sort
+elif [[ $ch1 == 2 ]]
+then
+awk -F, '{ print $3, $1,$2,$4,$5,$6,$7,$8,$9,$10,$11 }' admitted_patients.csv | sort  -r
+else
+echo "Invalid input"
+echo "------------------------------------"
+echo "Redirecting to Menu"
+echo "--------------------------------------"
+./menu
+exit 1
 fi
 fi
 
