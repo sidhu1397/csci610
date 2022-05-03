@@ -65,4 +65,4 @@ awk -F, -v room_id="$room_id" -v room_type="$room_type" -v number_of_rooms="$num
     }
     }1' rooms.csv > rooms.tmp && mv rooms.tmp rooms.csv
 
-echo "\n##### Room's records with id $room_id updated! #####\n"
+echo -e "\n##### Room's records with id $room_id updated! #####\n"

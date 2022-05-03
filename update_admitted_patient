@@ -67,4 +67,4 @@ awk -F, -v admitted_patient_id="$admitted_patient_id" -v admitted_date="$admitte
     }
     }1' admitted_patients.csv > admitted_patients.tmp && mv admitted_patients.tmp admitted_patients.csv
 
-echo "\n##### Admitted patient's records with id $admitted_patient_id updated! #####\n"
+echo -e "\n##### Admitted patient's records with id $admitted_patient_id updated! #####\n"

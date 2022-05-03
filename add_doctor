@@ -57,4 +57,4 @@ else
   printf "\n%s%s%s%s%s\n" $RANDOM,"$doc_name","$doc_speciality","$doc_office","$doc_qualification" >> doctors.csv
 fi
 
-echo "\n##### Doctor's details added! #####\n"
+echo -e "\n##### Doctor's details added! #####\n"

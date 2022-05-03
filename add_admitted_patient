@@ -92,4 +92,4 @@ else
   printf "\n%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$doctor_id,$surgery_status,$surgery_date,$room_id >> $filename
 fi
 
-echo "\n##### Admitted Patient's details added! #####\n"
+echo -e "\n##### Admitted Patient's details added! #####\n"

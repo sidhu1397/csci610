@@ -64,4 +64,4 @@ awk -F, -v doc_id=$doc_id -v doc_name="$doc_name" 'BEGIN{OFS=FS} {
 	}1' patients.csv > patients.tmp && mv patients.tmp patients.csv	
 
 
-echo "\n##### Doctor's records with id $doc_id updated! #####\n"
+echo -e "\n##### Doctor's records with id $doc_id updated! #####\n"

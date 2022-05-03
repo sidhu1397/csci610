@@ -74,4 +74,4 @@ awk -F, -v building_id="$building_id" -v building_name="$building_name" -v build
     }
     }1' buildings.csv > buildings.tmp && mv buildings.tmp buildings.csv
 
-echo echo "\n##### Building's record with id $building_id updated! #####\n"
+echo -e "\n##### Building's record with id $building_id updated! #####\n"

@@ -61,4 +61,4 @@ else
   printf "\n%s%s%s%s%s\n" $RANDOM,"$room_type",$number_of_rooms,$occupied_rooms,$free_rooms,$building_id >> rooms.csv
 fi
 
-echo "\n##### Room's details added! #####\n"
+echo -e "\n##### Room's details added! #####\n"

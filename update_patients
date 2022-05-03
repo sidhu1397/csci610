@@ -69,4 +69,4 @@ awk -F, -v patient_id="$patient_id" -v p_name="$p_name" -v department="$departme
     }
     }1' patients.csv > patients.tmp && mv patients.tmp patients.csv
 
-echo "\n##### Patient's records with id $patient_id updated! #####\n"
+echo -e "\n##### Patient's records with id $patient_id updated! #####\n"

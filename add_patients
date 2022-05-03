@@ -47,7 +47,7 @@ else
   printf "\n%s%s%s%s%s\n" $RANDOM,"$p_name","$department","$contact","$email" >> patients.csv
 fi
 
-echo "\n##### Patient's details added! #####\n"
+echo -e "\n##### Patient's details added! #####\n"
 
 else
 echo "Please enter a valid email id in xxxx@xxxx.xxx format"

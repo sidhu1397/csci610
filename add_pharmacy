@@ -44,4 +44,4 @@ else
   printf "\n%s%s%s%s%s\n" $RANDOM,"$location","$pharmacist","$building_id" >> pharmacy.csv
 fi
 
-echo "\n##### Pharmacy's details added! #####\n"
+echo -e "\n##### Pharmacy's details added! #####\n"

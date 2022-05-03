@@ -17,25 +17,25 @@ read operation_choice
 
 # case statement is used to compare one value with the multiple cases.
 case $operation_choice in
-  1)  echo "\nOn which table do you want to ADD the data?"
+  1)  echo -e "\nOn which table do you want to ADD the data?"
       echo "1. Doctor 2. Patient 3. Admitted Patient 4. Building 5. Rooms 6. Pharmacy"  
       echo -n "Please enter the corresponding number: "
       read choice
       
       case $choice in
-        1) echo "\n##### You have chosen to ADD a DOCTOR #####\n"
+        1) echo -e "\n##### You have chosen to ADD a DOCTOR #####\n"
 	        ./add_doctor;;
-        2) echo "\n##### You have chosen to ADD a PATIENT #####\n"
+        2) echo -e "\n##### You have chosen to ADD a PATIENT #####\n"
 	        ./add_patients;;
-        3) echo "\n##### You have chosen to ADD an ADMITTED PATIENT #####\n"
+        3) echo -e "\n##### You have chosen to ADD an ADMITTED PATIENT #####\n"
             ./add_admitted_patient;;
-        4) echo "\n##### You have chosen to ADD a BUILDING #####\n"
+        4) echo -e "\n##### You have chosen to ADD a BUILDING #####\n"
             ./add_buildings;;
-        5) echo "\n##### You have chosen to ADD a ROOM #####\n"
+        5) echo -e "\n##### You have chosen to ADD a ROOM #####\n"
             ./add_room;;
-        6) echo "\n##### You have chosen to ADD a PHARMACY #####\n"
+        6) echo -e "\n##### You have chosen to ADD a PHARMACY #####\n"
             ./add_pharmacy;;
-        *) echo "\n##### Invalid option! #####\n";;
+        *) echo -e "\n##### Invalid option! #####\n";;
        esac;;
 
   2)  echo "On which table do you want to EDIT the data?"
@@ -44,19 +44,19 @@ case $operation_choice in
       read choice
   
       case $choice in
-        1) echo "\n##### You have chosen to EDIT a DOCTOR #####\n"
+        1) echo -e "\n##### You have chosen to EDIT a DOCTOR #####\n"
 	        ./update_doctors;;
-        2) echo "\n##### You have chosen to EDIT a PATIENT #####\n"   
+        2) echo -e "\n##### You have chosen to EDIT a PATIENT #####\n"   
 	        ./update_patients;;
-        3) echo "\n##### You have chosen to EDIT an ADMITTED PATIENT #####\n"
+        3) echo -e "\n##### You have chosen to EDIT an ADMITTED PATIENT #####\n"
             ./update_admitted_patient;;
-        4) echo "\n##### You have chosen to EDIT a BUILDING #####\n"
+        4) echo -e "\n##### You have chosen to EDIT a BUILDING #####\n"
             ./update_buildings;;
-        5) echo "\n##### You have chosen to EDIT a ROOM #####\n"
+        5) echo -e "\n##### You have chosen to EDIT a ROOM #####\n"
             ./update_room;;
-        6) echo "\n##### You have chosen to EDIT a PHARMACY #####\n"
+        6) echo -e "\n##### You have chosen to EDIT a PHARMACY #####\n"
             ./update_pharmacy;;
-        *) echo "\n##### Invalid option! #####\n";;
+        *) echo -e "\n##### Invalid option! #####\n";;
        esac;;  
       
    3) echo "On which table do you want to DELETE the data?"
@@ -65,19 +65,19 @@ case $operation_choice in
       read choice
   
       case $choice in
-        1) echo "\n##### You have chosen to DELETE a DOCTOR #####\n"
+        1) echo -e "\n##### You have chosen to DELETE a DOCTOR #####\n"
 	        ./delete_doctors;;
-        2) echo "\n##### You have chosen to DELETE a PATIENT #####\n"  
+        2) echo -e "\n##### You have chosen to DELETE a PATIENT #####\n"  
 	        ./delete_patients;;
-        3) echo "\n##### You have chosen to DELETE an ADMITTED PATIENT #####\n"
+        3) echo -e "\n##### You have chosen to DELETE an ADMITTED PATIENT #####\n"
             ./delete_admitted_patient;;
-        4) echo "\n##### You have chosen to DELETE a BUILDING #####\n"
+        4) echo -e "\n##### You have chosen to DELETE a BUILDING #####\n"
             ./delete_buildings;;
-        5) echo "\n##### You have chosen to DELETE a ROOM #####\n"
+        5) echo -e "\n##### You have chosen to DELETE a ROOM #####\n"
             ./delete_room;;
-        6) echo "\n##### You have chosen to DELETE a PHARMACY #####\n"
+        6) echo -e "\n##### You have chosen to DELETE a PHARMACY #####\n"
             ./delete_pharmacy;;
-        *) echo "\n##### Invalid option! #####\n";;
+        *) echo -e "\n##### Invalid option! #####\n";;
        esac;;
 
     4) echo "Which table related SEARCH would you like to perform?"
@@ -102,7 +102,7 @@ case $operation_choice in
     *) echo "Invalid option"
   
 esac
-  echo "Redirecting to Main Menu"
+  echo -e "\nRedirecting to Main Menu"
   ./menu
   exit 1
 done
