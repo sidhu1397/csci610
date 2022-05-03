@@ -1,6 +1,6 @@
 #Regex Check
 # location_regex="[A-Za-z0-9'\.\-\s\,]"
-location_regex="[^a-zA-Z ]+"
+location_regex="[^a-zA-Z0-9 ]+"
 pharmacist_regex="[^a-zA-Z ]+"
 number_regex="[^0-9 ]+"
 
@@ -33,7 +33,7 @@ echo "Please enter a valid number"
 exit 1
 fi
 
-#ADD RECORDS
+#ADD PHARMACY RECORDS
 filename=pharmacy.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then
