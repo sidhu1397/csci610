@@ -14,3 +14,4 @@ r_id,type,number_of_rooms,occupied_rooms,free_rooms,building_id,dummy
 13,General,10,7,3,2,0
 18918,DELUXEEE,222,22,2,1
 28886,Deluxe,11,10,1,1
+31200,classic,20,10,5,3

@@ -10,3 +10,8 @@ ap_id,name,admitted_date,location,doctor,diagnosis,patient_id,doctor_id,surgery_
 9,Joseph King,2022-04-12,Sartell,,COVID,9,9,pending,2022-05-5,8
 10,Taylor Wong,2022-04-30,Waite Park,,COVID,10,10,pending,2022-05-10,8
 28448,Mona Smith,2020-05-21,StCloud,,COVID,1,1,Completed,2022-05-12,2
+9465,,2022-01-11,St Cloud,,COVID,1,2,Completed,2022-02-01,1
+10055,$,2022-2-2,St CLoud,,COVID,1,2,None,2022-02-2,2
+26763,,2022-02-2,St Clod,,COVID,1,2,None,2021-02-2,2
+15501,Mona Smith,2022-02-02,st cloued,Harrison Ford,covid,1,,none,2022-02-2,12
+10132,Monika Geller,2022-02-02,Sartell,Johnny Depp,Covid,9,3,none,2022-01-02,4

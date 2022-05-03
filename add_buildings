@@ -1,6 +1,7 @@
 #Regex Check
 name_regex="[^a-zA-Z ]+"
-address_regex="[A-Za-z0-9'\.\-\s\,]"
+# address_regex="[A-Za-z0-9'\.\-\s\,]"
+address_regex="[^a-zA-Z ]+"
 no_of_rooms_regex="[^0-9]+"
 doc_office_regex="[^0-9]+"
 manager_regex="[^a-zA-Z ]+"

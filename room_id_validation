@@ -11,15 +11,15 @@ do
   if [[ "$1" = "$n" ]]
   then
      nfound=1
-     echo "room Found"
+     echo "Room Found!"
      return 1
   fi
 done
 
 if [[ $nfound -eq 0 ]]
 then
- echo "room not found"
- echo "room id is not in the database.Please enter a valid room id"
+ echo "Room not found!"
+ echo "Room id is not in the database. Please enter a valid room id!"
  return 0
 fi
 }

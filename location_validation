@@ -13,14 +13,14 @@ do
   if [[ "$1" = "$n" ]]
   then
      nfound=1
-     echo "valid location Found"
+     echo -e "Valid location Found!\n"
      return 1
   fi
 done
 
 if [[ $nfound -eq 0 ]]
 then
- echo "location is not valid. please enter from this list(St Cloud Minneapolis St Paul Duluth Sartell Waite Park)"
+ echo "Location is not valid. Please enter from this list(St Cloud, Minneapolis, St Paul, Duluth, Sartell, Waite Park)"
  return 0
 fi
 }

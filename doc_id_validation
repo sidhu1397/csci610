@@ -11,7 +11,7 @@ do
   if [[ "$1" = "$n" ]]
   then
      nfound=1
-     echo "Doc Found"
+     echo "Doc Found!"
      return 1
   fi
 done

@@ -26,11 +26,11 @@ then
 
 bid=`nawk -v ch1="$ch1" -F, 'BEGIN{arr[1]="CSCI";arr[2]="Cardiology";arr[3]="ENT";arr[4]="Ortho";arr[5]="Pediatric";arr[6]="Radiology";arr[7]="OPD";arr[8]="Pharmacy";arr[9]="Neurology";arr[10]="Nursing";}{ if ($7 == arr[ch1]){print $1}}' buildings.csv`
 
-echo "building info"
+echo "Building Info:"
 echo " "
 awk -v bid="$bid" -F, '{if (NR == 1){printf "%-15s%-15s%-15s\n",$1,$2,$7}if ($1 == bid) {printf "%-15s%-15s%-15s\n",$1,$2,$7}}' buildings.csv
 echo " "
-echo "room info"
+echo "Room Info:"
 echo " "
 nawk -v bid="$bid" -F, '{if (NR == 1){printf "%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5}if ($6 == bid) {printf "%-15s%-15s%-15s%-15s%-15s\n",$1,$2,$3,$4,$5}}' rooms.csv
 echo "-------------------------------------------------------------------------------------"

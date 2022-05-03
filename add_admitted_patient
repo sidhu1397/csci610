@@ -11,7 +11,7 @@ read patient_id
 
 if [[ "$patient_id" =~ $number_regex ]]
 then
-echo "please enter a valid number as id"
+echo "Please enter a valid number as id"
 exit 1
 fi
 
@@ -23,15 +23,15 @@ then
 fi
 
 echo "Enter doctor id"
-read doctor_id
+read d_id
 
-if [[ "$doctor_id" =~ $number_regex ]]
+if [[ "$d_id" =~ $number_regex ]]
 then
 echo "Please enter a valid number as id"
 exit 1
 fi
 
-./doc_id_validation $doctor_id
+./doc_id_validation $d_id
 
 if [[ $? == 0 ]] 
 then
@@ -47,7 +47,7 @@ read location
 
 if [[ "$location" =~ $location_regex ]]
 then
-echo "please enter a valid location"
+echo "Please enter a valid location"
 exit 1
 fi
 
@@ -70,10 +70,10 @@ then
     exit
 fi
 
-patient_name=`ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v d_id="$d_id" '{if ( $1 == d_id ) {
+patient_name=$(ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v patient_id="$patient_id" '{if ( $1 == patient_id ) {
     patient_name = $2;
     print patient_name;
-    }}' patients.csv `
+    }}' patients.csv )
 
 doctor_name=`ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v d_id="$d_id" '{if ( $1 == d_id ) {
     name = $2;
@@ -85,11 +85,11 @@ doctor_name=`ps -ef | grep "port 10 -" | grep -v "grep port 10 -"| awk -F, -v d_
 filename=admitted_patients.csv
 #Check if file ends with new line and add records appropriately
 if [ ! -s "$filename" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$doctor_id,$surgery_status,$surgery_date,$room_id >> $filename
+  printf "%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$d_id,$surgery_status,$surgery_date,$room_id >> $filename
 elif [ -z "$(tail -c 1 <"$filename")" ]; then
-  printf "%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$doctor_id,$surgery_status,$surgery_date,$room_id >> $filename
+  printf "%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$d_id,$surgery_status,$surgery_date,$room_id >> $filename
 else
-  printf "\n%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$doctor_id,$surgery_status,$surgery_date,$room_id >> $filename
+  printf "\n%s%s%s%s%s\n" $RANDOM,"$patient_name","$admitted_date","$location","$doctor_name","$diagnosis",$patient_id,$d_id,$surgery_status,$surgery_date,$room_id >> $filename
 fi
 
 echo -e "\n##### Admitted Patient's details added! #####\n"

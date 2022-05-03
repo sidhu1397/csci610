@@ -41,12 +41,24 @@ echo "Please enter a valid number"
 exit 1
 fi
 
+if [[ "$occupied_rooms" -gt "$number_of_rooms" ]]
+then
+echo -e "\n>>>>>Number of occupied rooms can't be more than total no. of rooms!<<<<<"
+exit 1
+fi
+
 echo "Enter no of free rooms"
 read free_rooms
 
 if [[ "$free_rooms" =~ $number_regex ]]
 then
 echo "Please enter a valid number"
+exit 1
+fi
+
+if [[ $free_rooms -gt  $(($number_of_rooms-$occupied_rooms)) ]]
+then
+echo "\n>>>>>Number of free rooms incorrect!<<<<<"
 exit 1
 fi
 
